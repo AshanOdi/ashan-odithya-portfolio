@@ -1,3 +1,4 @@
+import useReveal from "./hooks/useReveal.js";
 import Navbar from "./components/sections/Navbar.jsx";
 import Hero from "./components/sections/Hero.jsx";
 import About from "./components/sections/About.jsx";
@@ -13,6 +14,8 @@ import Footer from "./components/sections/Footer.jsx";
 
 // All page sections, in the order they appear on the page.
 export default function App() {
+  useReveal(); // fade sections in on scroll
+
   return (
     <>
       <Navbar />

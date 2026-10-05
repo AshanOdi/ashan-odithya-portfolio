@@ -107,3 +107,15 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   .btn:hover { transform: none; }
 }
+
+/* Scroll reveal (see src/hooks/useReveal.js): sections start slightly
+   lower and transparent, then slide up when they scroll into view. */
+.reveal-ready main .section:not(.hero) {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-ready main .section.is-visible {
+  opacity: 1;
+  transform: none;
+}
