@@ -45,6 +45,8 @@ portfolio/
 ├── src/
 │   ├── components/
 │   │   └── sections/        # Page sections (Hero, About, Projects...)
+│   ├── data/                # Editable content: projects, experience, links...
+│   ├── hooks/               # Small reusable React hooks
 │   ├── App.jsx              # Puts all sections together
 │   ├── main.jsx             # App entry point
 │   └── index.css            # Global styles
@@ -58,13 +60,15 @@ portfolio/
 - [x] Navbar with light/dark mode
 - [x] Hero section
 - [x] About section
-- [ ] Tech stack / skills section
-- [ ] Featured projects with case studies
-- [ ] Experience timeline
-- [ ] Education & certifications
-- [ ] "Now" section
-- [ ] Blog / notes
-- [ ] Contact section
+- [x] Tech stack / skills section
+- [x] Featured projects with case studies
+- [x] Experience timeline
+- [x] Education & certifications
+- [x] "Now" section
+- [x] Blog / notes
+- [x] Contact section
+- [x] Footer, favicon, social meta and scroll reveal
+- [ ] Replace mock content with real data (projects, experience, links, resume)
 - [ ] Deploy to Vercel with a custom domain
 
 ## License
