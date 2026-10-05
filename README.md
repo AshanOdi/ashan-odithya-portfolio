@@ -13,6 +13,10 @@ My personal portfolio website, built to showcase my projects, skills and experie
 
 ## Features
 
+- Editorial single-page layout: hero, about, tech stack, projects, experience, education, now, notes and contact
+- Featured project card plus an auto-scrolling strip of more projects, each with a case study dialog
+- Layered parallax portrait and a grey app-logo marquee
+- Light/dark mode that remembers your choice
 - Animated bento grid section (tech stack orbit, CI/CD pipeline, terminal typing, API request flow)
 - Fully responsive, from mobile to large screens
 - Respects the "reduce motion" accessibility setting
