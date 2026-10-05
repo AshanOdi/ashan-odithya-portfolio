@@ -25,3 +25,27 @@ body {
   background: var(--bg);
   color: var(--ink);
 }
+
+/* Shared section layout: every page section uses these classes so the
+   width, spacing and headings stay consistent across the site. */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 20px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin-bottom: 40px;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.section-head p { margin: 0; color: var(--muted); font-size: 1.15rem; }

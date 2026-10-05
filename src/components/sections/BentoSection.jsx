@@ -151,8 +151,8 @@ function ApiVisual() {
 /* ---------- Section ---------- */
 export default function BentoSection() {
   return (
-    <section className="bento">
-      <header className="bento-head">
+    <section className="section bento">
+      <header className="section-head">
         <h2>How I work</h2>
         <p>From the first commit to a live product.</p>
       </header>
