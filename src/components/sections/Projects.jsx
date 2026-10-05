@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { projects } from "../../data/projects.js";
+import CaseStudy from "./CaseStudy.jsx";
 import "./projects.css";
 
 export default function Projects() {
+  // The project whose case study is open, or null when none is open.
+  const [selected, setSelected] = useState(null);
+
   return (
     <section className="section" id="projects">
       <header className="section-head">
@@ -11,14 +16,21 @@ export default function Projects() {
 
       <div className="projects-grid">
         {projects.map((project, i) => (
-          <ProjectCard key={project.slug} project={project} featured={i === 0} />
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            featured={i === 0}
+            onOpen={() => setSelected(project)}
+          />
         ))}
       </div>
+
+      {selected && <CaseStudy project={selected} onClose={() => setSelected(null)} />}
     </section>
   );
 }
 
-function ProjectCard({ project, featured }) {
+function ProjectCard({ project, featured, onOpen }) {
   return (
     <article className={featured ? "project-card is-featured" : "project-card"}>
       {/* Preview area. TODO: real data - swap for a screenshot when ready. */}
@@ -40,6 +52,9 @@ function ProjectCard({ project, featured }) {
         </ul>
 
         <div className="project-links">
+          <button type="button" className="project-open" onClick={onOpen}>
+            Read case study →
+          </button>
           <a href={project.live} target="_blank" rel="noreferrer">Live demo ↗</a>
           <a href={project.github} target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>

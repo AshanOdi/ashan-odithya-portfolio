@@ -99,6 +99,17 @@
   border-bottom: 2px solid var(--line);
   transition: border-color 0.2s, color 0.2s;
 }
+.project-open {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+}
+.project-open:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .project-links a:hover { color: var(--accent); border-color: var(--accent); }
 .project-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 

@@ -1,0 +1,122 @@
+.case-study {
+  width: min(760px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--lift);
+}
+.case-study::backdrop {
+  background: rgba(10, 12, 18, 0.55);
+  backdrop-filter: blur(4px);
+}
+.case-study[open] { animation: cs-in 0.25s ease-out; }
+
+.cs-inner {
+  position: relative;
+  padding: 40px 44px 44px;
+}
+
+.cs-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.cs-close:hover { border-color: var(--accent); color: var(--accent); }
+.cs-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.cs-meta {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.cs-meta span { color: var(--accent); margin: 0 4px; }
+
+.case-study h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.cs-summary { margin: 14px 0 0; font-size: 1.1rem; line-height: 1.6; color: var(--muted); }
+
+.cs-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.cs-tech li {
+  padding: 5px 11px;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.cs-sections {
+  display: grid;
+  gap: 28px;
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.cs-block h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.cs-block h3 span {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--accent);
+}
+.cs-block p { margin: 0; line-height: 1.7; color: var(--muted); }
+
+.cs-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.cs-list li::marker { color: var(--accent); }
+
+.cs-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+@keyframes cs-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  .cs-inner { padding: 64px 22px 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-study[open] { animation: none; }
+}
