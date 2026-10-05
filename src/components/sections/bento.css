@@ -1,3 +1,5 @@
+.bento .section-head { margin-bottom: 28px; }
+
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -13,18 +15,20 @@
   border-radius: 24px;
   overflow: hidden;
 }
+/* Heights are kept small so the heading and the whole grid fit on one
+   laptop screen. Tall cards have no fixed height: they stretch to match
+   the two small cards beside them. */
 .viz {
   position: relative;
   flex: 1;
-  min-height: 230px;
+  min-height: 160px;
   display: grid;
   place-items: center;
   overflow: hidden;
 }
-.card-tall .viz { min-height: 430px; }
 
-.b-copy { padding: 22px 26px 28px; }
-.b-copy h3 { margin: 0 0 8px; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.015em; }
+.b-copy { padding: 16px 24px 22px; }
+.b-copy h3 { margin: 0 0 6px; font-size: 1.2rem; font-weight: 700; letter-spacing: -0.015em; }
 .b-copy p { margin: 0; color: var(--muted); line-height: 1.55; }
 
 /* ---------- Orbit ---------- */
@@ -94,8 +98,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  padding: 28px 20px;
+  gap: 20px;
+  padding: 20px;
 }
 .pipe {
   position: relative;
@@ -148,7 +152,7 @@
 .pipe-badge.show { opacity: 1; transform: none; }
 
 /* ---------- Terminal ---------- */
-.terminal-wrap { padding: 26px 22px 6px; }
+.terminal-wrap { padding: 20px 22px 0; align-items: start; }
 .terminal {
   width: 100%;
   max-width: 360px;
@@ -161,7 +165,7 @@
 }
 .term-bar { display: flex; gap: 6px; padding: 10px 12px; background: #1d222d; }
 .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3b414f; }
-.term-body { padding: 14px 16px; min-height: 124px; color: #d8dce6; line-height: 1.75; }
+.term-body { padding: 12px 16px; min-height: 112px; color: #d8dce6; line-height: 1.75; }
 .term-line.out { color: #62d595; }
 .prompt { color: #7aa2ff; margin-right: 8px; }
 .caret {
