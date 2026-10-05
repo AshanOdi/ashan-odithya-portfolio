@@ -33,6 +33,23 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  // Current theme. index.html already set it on <html> before React loaded,
+  // so we read it from there instead of guessing.
+  const [theme, setTheme] = useState(
+    () => document.documentElement.dataset.theme || "light"
+  );
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next); // remember the choice
+    } catch {
+      // storage can be blocked (private mode); the toggle still works
+    }
+  };
+
   return (
     <header className={scrolled ? "nav is-scrolled" : "nav"}>
       <nav className="nav-inner" aria-label="Main">
@@ -49,6 +66,14 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-actions">
+          <button
+            type="button"
+            className="theme-toggle"
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            onClick={toggleTheme}
+          >
+            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+          </button>
           <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noreferrer">
             Resume
           </a>
@@ -66,5 +91,25 @@ export default function Navbar() {
         </div>
       </nav>
     </header>
+  );
+}
+
+// Small inline SVG icons: no image files or icon library needed.
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+      strokeLinecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+    </svg>
   );
 }

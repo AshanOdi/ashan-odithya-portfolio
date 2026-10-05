@@ -1,9 +1,12 @@
 /* Design tokens: shared by every section. Change a value here and the
-   whole site updates. Dark mode will override these later. */
+   whole site updates. The dark theme below overrides the colours. */
 :root {
+  color-scheme: light;
   --bg: #f4f5f8;
   --card: #fbfbfd;
+  --surface: #ffffff; /* small elements that sit on top of a card */
   --ink: #141821;
+  --on-ink: #ffffff; /* text on an --ink background */
   --muted: #697080;
   --line: #e4e7ee;
   --accent: #2f6bff;
@@ -11,9 +14,28 @@
 
   --glow: 0 0 0 4px var(--accent-soft), 0 10px 30px rgba(47, 107, 255, 0.25);
   --rest: 0 4px 14px rgba(20, 24, 33, 0.05);
+  --lift: 0 10px 30px rgba(20, 24, 33, 0.1);
 
   --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+
+/* Dark theme: set by data-theme="dark" on <html> (see index.html + Navbar). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d1017;
+  --card: #151922;
+  --surface: #1c212c;
+  --ink: #eef1f6;
+  --on-ink: #0d1017;
+  --muted: #9aa3b5;
+  --line: #272d3a;
+  --accent: #5b8cff;
+  --accent-soft: rgba(91, 140, 255, 0.16);
+
+  --glow: 0 0 0 4px var(--accent-soft), 0 10px 30px rgba(91, 140, 255, 0.3);
+  --rest: 0 4px 14px rgba(0, 0, 0, 0.3);
+  --lift: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 * { box-sizing: border-box; }
@@ -24,6 +46,7 @@ body {
   font-family: var(--font-sans);
   background: var(--bg);
   color: var(--ink);
+  transition: background 0.3s, color 0.3s;
 }
 
 /* Shared section layout: every page section uses these classes so the
