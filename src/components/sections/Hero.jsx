@@ -25,7 +25,7 @@ const exploring = [
   "AI / ML engineering",
 ];
 
-const ROTATE_MS = 3500; // how long each item stays on screen
+const ROTATE_MS = 2200; // how long each item stays on screen
 
 export default function Hero() {
   // Index of the item currently shown in the badge.
@@ -50,7 +50,9 @@ export default function Hero() {
         </span>
         {/* key changes every time, so React re-mounts the span and the
             fade-in animation plays again for each new item */}
-        <span key={index} className="status-item">{exploring[index]}</span>
+        <span key={index} className="status-item">
+          {exploring[index]}
+        </span>
       </p>
 
       <p className="hero-eyebrow">
@@ -58,7 +60,8 @@ export default function Hero() {
       </p>
 
       <h1 className="hero-title">
-        {content.headlineStart} <span className="hero-accent">
+        {content.headlineStart}{" "}
+        <span className="hero-accent">
           <RevealText text={content.headlineAccent} />
         </span>{" "}
         {content.headlineEnd}
@@ -69,8 +72,12 @@ export default function Hero() {
         <p className="hero-intro">{content.intro}</p>
 
         <div className="hero-actions">
-          <a className="btn btn-primary" href="#projects">View projects</a>
-          <a className="btn btn-ghost" href="#contact">Contact me</a>
+          <a className="btn btn-primary" href="#projects">
+            View projects
+          </a>
+          <a className="btn btn-ghost" href="#contact">
+            Contact me
+          </a>
         </div>
       </div>
 
