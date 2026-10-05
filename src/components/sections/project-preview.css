@@ -1,0 +1,132 @@
+/* Mini browser window. Every shape is a plain element styled here, so the
+   preview follows the light/dark theme automatically. */
+.pp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--rest);
+}
+
+.pp-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.pp-dots { display: flex; gap: 5px; }
+.pp-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.pp-url {
+  flex: 1;
+  padding: 3px 10px;
+  background: var(--bg);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pp-body { flex: 1; min-height: 0; padding: 14px; overflow: hidden; }
+
+/* Shared "skeleton" pieces: grey bars, with accent for the highlighted one. */
+.pp-body i,
+.pp-body b,
+.pp-body em,
+.pp-body span,
+.pp-body strong { display: block; border-radius: 6px; background: var(--line); }
+.pp-body .is-on { background: var(--accent); }
+
+/* Dashboard: sidebar + stat tiles + bar chart */
+.pp-dash { display: flex; gap: 12px; height: 100%; }
+.pp-side { display: flex; flex-direction: column; gap: 8px; width: 18%; }
+.pp-side i { height: 10px; }
+.pp-main { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.pp-stats { flex-shrink: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.pp-stats span { padding: 8px; background: var(--bg); border-radius: 8px; }
+.pp-stats b { width: 50%; height: 6px; }
+.pp-stats em { width: 80%; height: 10px; margin-top: 6px; background: var(--muted); opacity: 0.35; }
+.pp-chart {
+  flex: 1 0 56px;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 10px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+.pp-chart i { flex: 1; border-radius: 4px 4px 2px 2px; }
+.pp-chart i:not(.is-on) { background: var(--accent-soft); }
+
+/* Kanban board: three columns of cards */
+.pp-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; height: 100%; }
+.pp-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: var(--bg);
+  border-radius: 10px;
+}
+.pp-col em { width: 50%; height: 7px; }
+.pp-col span { height: 30px; background: var(--surface); border: 1px solid var(--line); }
+.pp-col span.is-on { background: var(--accent-soft); border-color: var(--accent); }
+
+/* Chat: alternating bubbles + input bar */
+.pp-chat { display: flex; flex-direction: column; gap: 8px; height: 100%; }
+.pp-chat > span { flex-shrink: 0; height: 18px; border-radius: 10px; }
+.pp-chat .from-them { background: var(--bg); border: 1px solid var(--line); }
+.pp-chat .from-me { align-self: flex-end; background: var(--accent-soft); }
+.pp-chat .from-me.is-on { background: var(--accent); }
+.pp-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.pp-input em { flex: 1; height: 8px; margin-left: 6px; }
+.pp-input i { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); }
+
+/* List: search bar + product rows */
+.pp-list { display: flex; flex-direction: column; gap: 8px; }
+.pp-search { flex-shrink: 0; height: 22px; border: 1px solid var(--line); border-radius: 999px; }
+.pp-row {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: var(--bg);
+  border-radius: 10px;
+}
+.pp-row i { width: 30px; height: 30px; border-radius: 8px; background: var(--accent-soft); }
+.pp-row > span { flex: 1; background: none; }
+.pp-row b { width: 60%; height: 7px; }
+.pp-row em { width: 35%; height: 6px; margin-top: 6px; }
+.pp-row strong { width: 34px; height: 14px; border-radius: 999px; }
+
+/* Terminal: real text in the mono font */
+.pp-term {
+  height: 100%;
+  margin: -14px;
+  padding: 14px 16px;
+  background: #151922;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  color: #d8dce6;
+}
+.pp-term p { margin: 0; display: flex; align-items: center; gap: 8px; }
+.pp-term span { display: inline; background: none; color: #7aa2ff; }
+.pp-term .ok { color: #62d595; }
+.pp-term i { width: 7px; height: 13px; border-radius: 1px; background: #d8dce6; }
