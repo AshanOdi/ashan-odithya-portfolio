@@ -1,108 +1,9 @@
-/* ---------- Layout shared by both modes ---------- */
-
-/* Lines the cards up with the 1200px content column of other sections. */
-.projects { --gutter: max(20px, calc((100vw - 1200px) / 2 + 20px)); }
-
-.projects-sticky { padding: 72px 0; }
-
-.projects-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px 32px;
-  margin-bottom: 36px;
-  padding: 0 var(--gutter);
-}
-.projects-head h2 {
-  margin: 0;
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-}
-.projects-head p { margin: 8px 0 0; color: var(--muted); font-size: 1.15rem; }
-
-.projects-count {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.projects-count span { font-size: 2rem; color: var(--ink); }
-
-/* The row of cards. */
-.projects-track {
-  display: flex;
-  gap: 24px;
-  margin: 0;
-  padding: 8px var(--gutter) 24px;
-  list-style: none;
-}
-.projects-track > li { flex: 0 0 auto; }
-
-/* ---------- Pinned mode (wide screens, motion allowed) ---------- */
-
-/* The section is made tall in JS; this inner box sticks to the top of the
-   screen while you scroll through that height, so only the track moves. */
-.is-pinned .projects-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-content: safe center; /* never push the heading off the top */
-  padding: 92px 0 24px; /* top room for the sticky navbar */
-  overflow: hidden;
-}
-.is-pinned .projects-head { margin-bottom: 24px; }
-.is-pinned .projects-head h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
-.is-pinned .projects-track { will-change: transform; }
-
-/* Empty space after the last card, so it does not stop flush against
-   the screen edge (the track's own right padding is not scrollable). */
-.is-pinned .projects-track::after {
-  content: "";
-  flex: 0 0 calc(var(--gutter) - 24px);
-}
-
-/* Thin progress bar under the cards, filled by --progress (0 to 1). */
-.projects-progress {
-  display: none;
-  height: 2px;
-  margin: 8px var(--gutter) 0;
-  background: var(--line);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.projects-progress span {
-  display: block;
-  height: 100%;
-  background: var(--accent);
-  transform-origin: left;
-  transform: scaleX(var(--progress, 0));
-}
-.is-pinned .projects-progress { display: block; }
-
-/* ---------- Swipe mode (phones, tablets, reduced motion) ---------- */
-
-.projects:not(.is-pinned) .projects-track {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: var(--gutter);
-  scrollbar-width: none; /* the cards peeking in already hint at swiping */
-}
-.projects:not(.is-pinned) .projects-track::-webkit-scrollbar { display: none; }
-.projects:not(.is-pinned) .projects-track > li { scroll-snap-align: start; }
-
-/* ---------- The card ---------- */
+/* ---------- Card (shared by featured + compact) ---------- */
 
 .project-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: min(420px, 82vw);
-  height: 100%;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -133,15 +34,14 @@
 /* Soft backdrop around the mini browser window. */
 .project-preview {
   position: relative;
-  height: clamp(130px, 21vh, 210px);
-  padding: 20px 20px 0;
+  padding: 24px 24px 0;
   background: radial-gradient(circle at 20% 0%, var(--accent-soft), transparent 70%);
   border-bottom: 1px solid var(--line);
 }
 .project-preview .pp {
+  border-bottom: 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-bottom: 0;
   transition: transform 0.35s ease;
 }
 .project-card:hover .pp { transform: translateY(-4px); }
@@ -228,10 +128,61 @@
 .project-links a:focus-visible,
 .project-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
+/* ---------- Featured: big, side by side ---------- */
+
+.project-card.is-featured { flex-direction: row; }
+.is-featured .project-preview {
+  flex: 1.3;
+  min-height: 360px;
+  padding: 36px 0 0 36px;
+  border-bottom: 0;
+  border-right: 1px solid var(--line);
+}
+/* The window runs off the bottom-right corner, like a cropped screenshot. */
+.is-featured .project-preview .pp { border-right: 0; border-top-right-radius: 0; }
+.is-featured .project-body { flex: 1; justify-content: center; padding: 40px; gap: 16px; }
+.is-featured .project-body h3 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.is-featured .project-summary { font-size: 1.1rem; }
+
+/* ---------- Compact: fixed-size cards in the strip ---------- */
+
+.project-card.is-compact { width: 320px; }
+.is-compact .project-preview { height: 150px; padding: 18px 18px 0; }
+.is-compact .project-body { padding: 18px 20px 20px; gap: 10px; }
+.is-compact .project-body h3 { font-size: 1.25rem; }
+/* Keep summaries to two lines so every card is the same height. */
+.is-compact .project-summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+/* ---------- "More projects" strip ---------- */
+
+.projects-more { margin-top: 48px; }
+.projects-more-label {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.projects-more-label span { color: var(--accent); margin: 0 4px; }
+/* Room for the hover lift so the raised card is not clipped. */
+.projects-more .marquee-group { padding-top: 14px; }
+
 @media (max-width: 900px) {
-  .projects-sticky { padding: 56px 0; }
-  .projects-head { align-items: flex-start; flex-direction: column; }
-  .projects-count { display: none; }
+  .project-card.is-featured { flex-direction: column; }
+  .is-featured .project-preview {
+    min-height: 0;
+    height: 220px;
+    padding: 24px 0 0 24px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .is-featured .project-body { padding: 24px; }
+  .project-card.is-compact { width: min(300px, 80vw); }
 }
 
 @media (prefers-reduced-motion: reduce) {
