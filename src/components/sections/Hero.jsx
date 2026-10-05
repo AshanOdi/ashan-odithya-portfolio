@@ -61,11 +61,14 @@ export default function Hero() {
         {content.headlineEnd}
       </h1>
 
-      <p className="hero-intro">{content.intro}</p>
+      {/* Intro on the left, buttons on the right (stacked on phones). */}
+      <div className="hero-row">
+        <p className="hero-intro">{content.intro}</p>
 
-      <div className="hero-actions">
-        <a className="btn btn-primary" href="#projects">View projects</a>
-        <a className="btn btn-ghost" href="#contact">Contact me</a>
+        <div className="hero-actions">
+          <a className="btn btn-primary" href="#projects">View projects</a>
+          <a className="btn btn-ghost" href="#contact">Contact me</a>
+        </div>
       </div>
 
       {/* Grey logo strip of apps I've built (zyner-style "trusted by"). */}
