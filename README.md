@@ -1,4 +1,4 @@
-# Your Name | Software Engineer Portfolio
+# Ashan Odithya | Software Engineer Portfolio
 
 My personal portfolio website, built to showcase my projects, skills and experience as a software engineer.
 
@@ -23,8 +23,8 @@ My personal portfolio website, built to showcase my projects, skills and experie
 Requirements: [Node.js](https://nodejs.org) 18 or newer.
 
 ```bash
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
+git clone https://github.com/AshanOdi/ashan-odithya-portfolio.git
+cd ashan-odithya-portfolio
 npm install
 npm run dev
 ```
