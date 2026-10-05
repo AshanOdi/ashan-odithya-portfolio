@@ -8,7 +8,8 @@ export default function CaseStudy({ project, onClose }) {
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    dialog.showModal();
+    // Guard: React StrictMode runs effects twice in development.
+    if (!dialog.open) dialog.showModal();
 
     // Stop the page behind the dialog from scrolling while it is open.
     const oldOverflow = document.body.style.overflow;
