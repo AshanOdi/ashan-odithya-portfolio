@@ -55,6 +55,8 @@
 }
 
 .status-label { color: var(--muted); }
+/* Capitalise the first visible word, whichever it is. */
+.status-label::first-letter { text-transform: uppercase; }
 .status-item {
   font-weight: 700;
   color: var(--ink);
@@ -106,6 +108,12 @@
 
 @media (max-width: 900px) {
   .hero { padding-top: 56px; padding-bottom: 56px; }
+}
+
+/* Phones: drop "Currently" so the badge stays on one line. */
+@media (max-width: 480px) {
+  .status-label-long { display: none; }
+  .hero-status { font-size: 0.85rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -41,7 +41,9 @@ export default function Hero() {
     <section className="section hero" id="hero">
       <p className="hero-status">
         <span className="status-dot" aria-hidden="true" />
-        <span className="status-label">Currently exploring</span>
+        <span className="status-label">
+          <span className="status-label-long">Currently </span>exploring
+        </span>
         {/* key changes every time, so React re-mounts the span and the
             fade-in animation plays again for each new item */}
         <span key={index} className="status-item">{exploring[index]}</span>
