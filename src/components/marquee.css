@@ -13,7 +13,6 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll var(--duration, 40s) linear infinite;
 }
 
 /* padding-right equals the gap, so both copies have exactly the same
@@ -28,58 +27,65 @@
 }
 .marquee-group > li { flex: 0 0 auto; display: flex; }
 
+/* ---------- CSS mode (decorative rows) ---------- */
+.marquee--css .marquee-track {
+  animation: marquee-scroll var(--duration, 40s) linear infinite;
+}
+.marquee--css:hover .marquee-track { animation-play-state: paused; }
+
 @keyframes marquee-scroll {
   to { transform: translateX(-50%); }
 }
 
-/* Pause while the mouse is over it, a child has keyboard focus,
-   or the pause button is pressed. */
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track,
-.marquee.is-paused .marquee-track {
-  animation-play-state: paused;
+@media (prefers-reduced-motion: reduce) {
+  .marquee--css .marquee-track { animation: none; }
+  .marquee--css .marquee-copy { display: none; }
+  .marquee--css .marquee-viewport { overflow-x: auto; scrollbar-width: none; }
 }
 
-.marquee-toggle {
-  display: inline-flex;
+/* ---------- Interactive mode (JS scrolling, see Marquee.jsx) ---------- */
+.marquee--interactive .marquee-viewport {
+  overflow-x: auto;
+  overscroll-behavior-x: contain; /* sideways swipes don't trigger "back" */
+  scrollbar-width: none;
+  cursor: grab;
+}
+.marquee--interactive .marquee-viewport::-webkit-scrollbar { display: none; }
+.marquee--interactive .marquee-viewport.is-dragging { cursor: grabbing; user-select: none; }
+.marquee--interactive .marquee-viewport.is-dragging * { pointer-events: none; }
+
+.marquee-controls {
+  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 8px;
-  padding: 6px 12px;
+}
+.marquee-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--card);
-  color: var(--muted);
+  color: var(--ink);
   font: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.marquee-btn:hover { border-color: var(--accent); color: var(--accent); }
+.marquee-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.marquee-toggle {
+  display: inline-flex;
+  gap: 6px;
+  width: auto;
+  margin-left: 4px;
+  padding: 0 14px;
   font-size: 0.82rem;
   font-weight: 600;
-  cursor: pointer;
+  color: var(--muted);
 }
-.marquee-toggle:hover { color: var(--ink); border-color: var(--ink); }
-.marquee-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-/* ---------- Still mode ----------
-   Reduced motion: never auto-scroll. Touch screens + interactive items:
-   moving buttons are hard to tap, so let people swipe instead.
-   Both become a normal sideways-scrolling row with snap points. */
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-  .marquee-copy { display: none; }
-  .marquee-viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .marquee-group > li { scroll-snap-align: start; }
-  .marquee-toggle { display: none; }
+  .marquee-toggle { display: none; } /* nothing moves on its own */
 }
-@media (hover: none) {
-  .marquee--interactive .marquee-track { animation: none; }
-  .marquee--interactive .marquee-copy { display: none; }
-  .marquee--interactive .marquee-viewport {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  .marquee--interactive .marquee-group > li { scroll-snap-align: start; }
-  .marquee--interactive .marquee-toggle { display: none; }
-}
-.marquee-viewport::-webkit-scrollbar { display: none; }

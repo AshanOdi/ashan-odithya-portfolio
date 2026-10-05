@@ -26,7 +26,7 @@ export default function Projects() {
         <p className="projects-more-label">
           More projects <span>/</span> {others.length}
         </p>
-        <Marquee label="More projects" duration={70} interactive>
+        <Marquee label="More projects" speed={32} interactive>
           {others.map((project, i) => (
             <ProjectCard
               key={project.slug}

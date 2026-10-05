@@ -45,6 +45,7 @@ const paths = {
   close: <path d="M18 6 6 18M6 6l12 12" />,
   arrowUpRight: <path d="M7 17 17 7M7 7h10v10" />,
   arrowRight: <path d="M5 12h14M13 6l6 6-6 6" />,
+  arrowLeft: <path d="M19 12H5M11 6l-6 6 6 6" />,
   pause: <path d="M9 5v14M15 5v14" />,
   play: <path d="M7 4.5v15l12-7.5-12-7.5Z" />,
   github: (
