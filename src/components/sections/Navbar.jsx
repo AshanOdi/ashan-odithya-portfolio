@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { site } from "../../data/site.js";
 import "./navbar.css";
 
 // Each link scrolls to the section with the matching id on the page.
@@ -74,7 +75,7 @@ export default function Navbar() {
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
-          <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noreferrer">
+          <a className="nav-resume" href={site.resume} target="_blank" rel="noreferrer">
             Resume
           </a>
           <button
