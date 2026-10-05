@@ -1,3 +1,4 @@
+import Icon from "../Icon.jsx";
 import "./now.css";
 
 // What I'm focused on right now. Update this every few months and change
@@ -6,17 +7,17 @@ const updated = "October 2026";
 
 const focus = [
   {
-    icon: "☁️",
+    icon: "cloud",
     title: "AWS & Cloud Architecture",
     text: "Learning AWS deeper: IAM, networking, serverless, infrastructure and cloud architecture.",
   },
   {
-    icon: "⚙️",
+    icon: "server",
     title: "Backend & System Design",
     text: "Improving Node.js backend development, APIs, databases and scalable system design.",
   },
   {
-    icon: "🤖",
+    icon: "cpu",
     title: "AI / ML Engineering",
     text: "Exploring practical AI/ML applications and how to integrate AI into real-world software products.",
   },
@@ -35,7 +36,7 @@ export default function Now() {
       <div className="now-grid">
         {focus.map((item) => (
           <article className="now-card" key={item.title}>
-            <span className="now-icon" aria-hidden="true">{item.icon}</span>
+            <span className="now-icon"><Icon name={item.icon} size={22} /></span>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
           </article>

@@ -1,3 +1,4 @@
+import Icon from "../Icon.jsx";
 import "./about.css";
 
 const paragraph =
@@ -8,11 +9,11 @@ const paragraph =
   "architecture, system design and AI-powered applications.";
 
 const facts = [
-  { icon: "📍", text: "Sri Lanka" },
-  { icon: "💻", text: "Software Engineer" },
-  { icon: "☁️", text: "AWS & Full-stack" },
-  { icon: "🌱", text: "Always learning & building" },
-  { icon: "🌍", text: "Open to remote opportunities" },
+  { icon: "mapPin", text: "Sri Lanka" },
+  { icon: "laptop", text: "Software Engineer" },
+  { icon: "cloud", text: "AWS & Full-stack" },
+  { icon: "sprout", text: "Always learning & building" },
+  { icon: "globe", text: "Open to remote opportunities" },
 ];
 
 export default function About() {
@@ -40,7 +41,7 @@ export default function About() {
         <ul className="about-facts">
           {facts.map((fact) => (
             <li key={fact.text}>
-              <span aria-hidden="true">{fact.icon}</span>
+              <Icon name={fact.icon} size={16} />
               {fact.text}
             </li>
           ))}

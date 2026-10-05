@@ -33,7 +33,7 @@
   margin-bottom: 20px;
   background: var(--accent-soft);
   border-radius: 14px;
-  font-size: 1.4rem;
+  color: var(--accent);
 }
 .now-card h3 {
   margin: 0 0 8px;

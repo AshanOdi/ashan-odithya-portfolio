@@ -20,6 +20,8 @@
 }
 
 .cs-close {
+  display: grid;
+  place-items: center;
   position: absolute;
   top: 18px;
   right: 18px;
@@ -29,7 +31,6 @@
   border-radius: 50%;
   background: var(--surface);
   color: var(--ink);
-  font-size: 1rem;
   cursor: pointer;
 }
 .cs-close:hover { border-color: var(--accent); color: var(--accent); }

@@ -59,6 +59,7 @@
   font-size: 0.95rem;
   font-weight: 600;
 }
+.about-facts svg { color: var(--accent); flex-shrink: 0; }
 
 /* Small screens: one column, photo on top with a limited width. */
 @media (max-width: 900px) {

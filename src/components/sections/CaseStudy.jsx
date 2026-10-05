@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Icon from "../Icon.jsx";
 import "./case-study.css";
 
 // Full project story shown in a native <dialog>. The browser gives us
@@ -41,7 +42,7 @@ export default function CaseStudy({ project, onClose }) {
           aria-label="Close case study"
           onClick={() => dialogRef.current.close()}
         >
-          ✕
+          <Icon name="close" size={18} />
         </button>
 
         <p className="cs-meta">
