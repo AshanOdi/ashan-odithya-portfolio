@@ -7,6 +7,7 @@ import Projects from "./components/sections/Projects.jsx";
 import Experience from "./components/sections/Experience.jsx";
 import Education from "./components/sections/Education.jsx";
 import Now from "./components/sections/Now.jsx";
+import Blog from "./components/sections/Blog.jsx";
 
 // Sections will be added here step by step:
 // Contact, Footer
@@ -23,6 +24,7 @@ export default function App() {
         <Experience />
         <Education />
         <Now />
+        <Blog />
       </main>
     </>
   );
