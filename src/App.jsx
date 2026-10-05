@@ -3,9 +3,10 @@ import Hero from "./components/sections/Hero.jsx";
 import About from "./components/sections/About.jsx";
 import Skills from "./components/sections/Skills.jsx";
 import BentoSection from "./components/sections/BentoSection.jsx";
+import Projects from "./components/sections/Projects.jsx";
 
 // Sections will be added here step by step:
-// Projects, Experience, Contact, Footer
+// Experience, Contact, Footer
 export default function App() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function App() {
         <About />
         <Skills />
         <BentoSection />
+        <Projects />
       </main>
     </>
   );
