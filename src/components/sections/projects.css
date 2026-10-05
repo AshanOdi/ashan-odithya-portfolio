@@ -1,128 +1,243 @@
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
+/* ---------- Layout shared by both modes ---------- */
 
-.project-card {
+/* Lines the cards up with the 1200px content column of other sections. */
+.projects { --gutter: max(20px, calc((100vw - 1200px) / 2 + 20px)); }
+
+.projects-sticky { padding: 72px 0; }
+
+.projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px 32px;
+  margin-bottom: 36px;
+  padding: 0 var(--gutter);
+}
+.projects-head h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.projects-head p { margin: 8px 0 0; color: var(--muted); font-size: 1.15rem; }
+
+.projects-count {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.projects-count span { font-size: 2rem; color: var(--ink); }
+
+/* The row of cards. */
+.projects-track {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 8px var(--gutter) 24px;
+  list-style: none;
+}
+.projects-track > li { flex: 0 0 auto; }
+
+/* ---------- Pinned mode (wide screens, motion allowed) ---------- */
+
+/* The section is made tall in JS; this inner box sticks to the top of the
+   screen while you scroll through that height, so only the track moves. */
+.is-pinned .projects-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  justify-content: safe center; /* never push the heading off the top */
+  padding: 92px 0 24px; /* top room for the sticky navbar */
+  overflow: hidden;
+}
+.is-pinned .projects-head { margin-bottom: 24px; }
+.is-pinned .projects-head h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+.is-pinned .projects-track { will-change: transform; }
+
+/* Empty space after the last card, so it does not stop flush against
+   the screen edge (the track's own right padding is not scrollable). */
+.is-pinned .projects-track::after {
+  content: "";
+  flex: 0 0 calc(var(--gutter) - 24px);
+}
+
+/* Thin progress bar under the cards, filled by --progress (0 to 1). */
+.projects-progress {
+  display: none;
+  height: 2px;
+  margin: 8px var(--gutter) 0;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.projects-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+}
+.is-pinned .projects-progress { display: block; }
+
+/* ---------- Swipe mode (phones, tablets, reduced motion) ---------- */
+
+.projects:not(.is-pinned) .projects-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--gutter);
+  scrollbar-width: none; /* the cards peeking in already hint at swiping */
+}
+.projects:not(.is-pinned) .projects-track::-webkit-scrollbar { display: none; }
+.projects:not(.is-pinned) .projects-track > li { scroll-snap-align: start; }
+
+/* ---------- The card ---------- */
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 82vw);
+  height: 100%;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 24px;
   overflow: hidden;
   transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
+/* Cursor spotlight: a soft accent glow at the mouse position (--mx, --my). */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    var(--accent-soft),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.project-card:hover::before { opacity: 1; }
 .project-card:hover {
   border-color: var(--accent);
   box-shadow: var(--lift);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
-/* The first project spans both columns and sits side by side. */
-.project-card.is-featured {
-  grid-column: 1 / -1;
-  flex-direction: row;
-}
-.is-featured .project-preview { flex: 1.2; min-height: 340px; }
-.is-featured .project-body { flex: 1; justify-content: center; }
-
-/* Placeholder preview: soft accent gradient with the project name. */
+/* Soft backdrop around the mini browser window. */
 .project-preview {
   position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 220px;
-  background:
-    radial-gradient(circle at 30% 20%, var(--accent-soft), transparent 60%),
-    linear-gradient(135deg, var(--surface), var(--bg));
+  height: clamp(130px, 21vh, 210px);
+  padding: 20px 20px 0;
+  background: radial-gradient(circle at 20% 0%, var(--accent-soft), transparent 70%);
   border-bottom: 1px solid var(--line);
 }
-.is-featured .project-preview { border-bottom: 0; border-right: 1px solid var(--line); }
-.project-preview-title {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  color: var(--accent);
+.project-preview .pp {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+  transition: transform 0.35s ease;
 }
+.project-card:hover .pp { transform: translateY(-4px); }
 
 .project-body {
+  position: relative; /* stay above the spotlight */
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 26px 28px 30px;
+  flex: 1;
+  gap: 12px;
+  padding: 22px 24px 24px;
 }
 
 .project-meta {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 .project-meta span { color: var(--accent); margin: 0 4px; }
 
 .project-body h3 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
 }
-.project-summary { margin: 0; color: var(--muted); line-height: 1.6; }
+.project-summary { margin: 0; color: var(--muted); line-height: 1.55; }
 
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 4px 0 0;
+  gap: 6px;
+  margin: 2px 0 0;
   padding: 0;
   list-style: none;
 }
 .project-tech li {
-  padding: 5px 11px;
+  padding: 4px 10px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--muted);
 }
 
 .project-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 6px;
+  gap: 8px 18px;
+  margin-top: auto;
+  padding-top: 8px;
 }
-.project-links a {
-  font-weight: 700;
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 2px solid var(--line);
-  transition: border-color 0.2s, color 0.2s;
-}
+.project-links a,
 .project-open {
-  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.project-links a { color: var(--muted); transition: color 0.2s; }
+.project-links a:hover { color: var(--ink); }
+
+/* Main action: a small solid pill button. */
+.project-open {
+  padding: 8px 14px;
   border: 0;
-  background: none;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--on-ink);
   font: inherit;
   font-weight: 700;
-  color: var(--accent);
+  font-size: 0.9rem;
   cursor: pointer;
+  transition: background 0.2s;
 }
-.project-open:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-open:hover { background: var(--accent); }
+.project-open svg { transition: transform 0.2s; }
+.project-open:hover svg { transform: translateX(3px); }
+
+.project-links a:focus-visible,
 .project-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.project-links a:hover { color: var(--accent); border-color: var(--accent); }
-.project-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 900px) {
-  .projects-grid { grid-template-columns: 1fr; }
-  .project-card.is-featured { flex-direction: column; }
-  .is-featured .project-preview {
-    min-height: 220px;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
+  .projects-sticky { padding: 56px 0; }
+  .projects-head { align-items: flex-start; flex-direction: column; }
+  .projects-count { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card:hover { transform: none; }
+  .project-card,
+  .project-card .pp,
+  .project-open svg { transition: none; }
+  .project-card:hover,
+  .project-card:hover .pp { transform: none; }
 }
