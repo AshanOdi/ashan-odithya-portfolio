@@ -8,7 +8,6 @@ export const site = {
   // TODO: real data - your LinkedIn profile URL.
   linkedin: "https://www.linkedin.com/in/your-profile",
   resume: "/resume.pdf",
-  // TODO: real data - create a free form at https://formspree.io and paste
-  // its endpoint here, e.g. "https://formspree.io/f/abcdwxyz".
-  formEndpoint: "",
+  // Formspree form that receives contact messages (https://formspree.io).
+  formEndpoint: "https://formspree.io/f/xvgqndyb",
 };
