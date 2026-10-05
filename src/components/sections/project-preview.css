@@ -117,7 +117,7 @@
 
 /* Terminal: real text in the mono font */
 .pp-term {
-  height: 100%;
+  height: calc(100% + 28px); /* fill the body, including its padding */
   margin: -14px;
   padding: 14px 16px;
   background: #151922;
