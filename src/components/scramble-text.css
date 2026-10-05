@@ -1,0 +1,27 @@
+.scramble-char { position: relative; }
+
+/* While scrambling, hide the real letter (it still holds the space) and
+   draw a random glyph centred on top of it. */
+.scramble-char.is-scrambling { color: transparent; }
+.scramble-char.is-scrambling::after {
+  content: attr(data-glyph);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  color: var(--accent);
+  opacity: 0.55;
+}
+
+/* Visually hidden, but still read by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

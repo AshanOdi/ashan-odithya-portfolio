@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { apps } from "../../data/apps.js";
 import Marquee from "../Marquee.jsx";
 import AppLogo from "../AppLogo.jsx";
+import ScrambleText from "../ScrambleText.jsx";
 import "./hero.css";
 
 // All hero text lives here, so it is easy to edit in one place.
@@ -57,7 +58,9 @@ export default function Hero() {
       </p>
 
       <h1 className="hero-title">
-        {content.headlineStart} <span className="hero-accent">{content.headlineAccent}</span>{" "}
+        {content.headlineStart} <span className="hero-accent">
+          <ScrambleText text={content.headlineAccent} />
+        </span>{" "}
         {content.headlineEnd}
       </h1>
 
