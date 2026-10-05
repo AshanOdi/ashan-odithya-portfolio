@@ -120,6 +120,28 @@
 .card-status { transition-delay: 0.45s; }
 .card-code { transition-delay: 0.6s; }
 
+/* ---------- Gentle float ----------
+   After the entrance, both cards bob slowly up and down, in opposite
+   directions (one rises while the other sinks), like a balanced pair.
+   It uses `translate`, so it adds on top of the mouse parallax
+   (`transform`) instead of replacing it. The delay waits until the
+   entrance animation has finished. */
+.portrait.is-in .card-status {
+  animation: card-float 5s ease-in-out 1.5s infinite;
+}
+.portrait.is-in .card-code {
+  animation: card-sink 5s ease-in-out 1.5s infinite;
+}
+/* Both start from 0 (where the entrance ends), so nothing jumps. */
+@keyframes card-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+@keyframes card-sink {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 10px; }
+}
+
 @media (max-width: 900px) {
   .portrait { max-width: 380px; margin: 0 auto; }
   .card-status { left: -2%; }
@@ -127,6 +149,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .portrait.is-in .portrait-card { animation: none; }
   .portrait-panel,
   .portrait-person,
   .portrait-card { transition: none; }
