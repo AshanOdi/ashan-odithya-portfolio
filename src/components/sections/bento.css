@@ -165,7 +165,15 @@
 }
 .term-bar { display: flex; gap: 6px; padding: 10px 12px; background: #1d222d; }
 .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3b414f; }
-.term-body { padding: 12px 16px; min-height: 112px; color: #d8dce6; line-height: 1.75; }
+/* Fixed height for the longest moment of the script (5 lines), so typing
+   never changes the card size and the grid never jumps. */
+.term-body {
+  height: calc(1.75em * 5 + 24px);
+  overflow: hidden;
+  padding: 12px 16px;
+  color: #d8dce6;
+  line-height: 1.75;
+}
 .term-line.out { color: #62d595; }
 .prompt { color: #7aa2ff; margin-right: 8px; }
 .caret {
