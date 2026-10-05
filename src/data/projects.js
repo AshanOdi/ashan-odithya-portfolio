@@ -1,10 +1,15 @@
-// Featured projects. The first project is shown as the large "hero" card.
+// Featured projects, shown in the horizontal scrolling section.
+// `domain` is shown in the mini browser bar of the preview, and `preview`
+// picks the mock UI drawn inside it: dashboard, board, chat, list, terminal.
 // TODO: real data - every project below is MOCK content. Replace the text,
-// links and numbers with your real projects (3 to 5 is ideal).
+// links and numbers with your real projects, and later swap the mock
+// preview for a real screenshot.
 export const projects = [
   {
     slug: "cloudledger",
     title: "CloudLedger",
+    domain: "cloudledger.app",
+    preview: "dashboard",
     year: "2026",
     role: "Full-stack engineer",
     summary:
@@ -38,6 +43,8 @@ export const projects = [
   {
     slug: "devpulse",
     title: "DevPulse",
+    domain: "devpulse.dev",
+    preview: "board",
     year: "2025",
     role: "Frontend lead",
     summary:
@@ -66,6 +73,8 @@ export const projects = [
   {
     slug: "askdocs",
     title: "AskDocs",
+    domain: "askdocs.ai",
+    preview: "chat",
     year: "2025",
     role: "Solo project",
     summary:
@@ -88,6 +97,126 @@ export const projects = [
       results: [
         "Answers typical questions in under 3 seconds with a source link.",
       ],
+    },
+  },
+  {
+    slug: "shopflow",
+    title: "ShopFlow",
+    domain: "shopflow.store",
+    preview: "list",
+    year: "2025",
+    role: "Full-stack engineer",
+    summary:
+      "An online store with a fast product catalogue, secure checkout and " +
+      "an admin panel for orders and stock.",
+    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    live: "https://example.com/shopflow",
+    github: "https://github.com/AshanOdi/shopflow",
+    caseStudy: {
+      problem: "A local shop sold only through social media and lost track of orders.",
+      role: "Built the storefront, checkout and admin panel end to end.",
+      decisions: [
+        "Used Stripe Checkout so card data never touches our servers.",
+        "Cached product pages so the catalogue loads instantly.",
+      ],
+      challenges: ["Keeping stock correct when two people buy the last item at once."],
+      results: ["Online orders grew to about 40% of total sales in three months."],
+    },
+  },
+  {
+    slug: "infrakit",
+    title: "InfraKit",
+    domain: "github.com/AshanOdi/infrakit",
+    preview: "terminal",
+    year: "2025",
+    role: "Open source",
+    summary:
+      "Reusable AWS CDK templates to launch a secure API, database and CI/CD " +
+      "pipeline in minutes.",
+    tech: ["AWS CDK", "TypeScript", "GitHub Actions", "IAM"],
+    live: "https://example.com/infrakit",
+    github: "https://github.com/AshanOdi/infrakit",
+    caseStudy: {
+      problem: "Every new project repeated the same days of AWS setup by hand.",
+      role: "Designed and maintain the templates and their documentation.",
+      decisions: [
+        "Least-privilege IAM roles by default for every template.",
+        "Everything as code, so environments can be rebuilt from scratch.",
+      ],
+      challenges: ["Keeping templates simple while still covering real needs."],
+      results: ["New environment setup went from ~2 days to under 30 minutes."],
+    },
+  },
+  {
+    slug: "taskpilot",
+    title: "TaskPilot",
+    domain: "taskpilot.io",
+    preview: "board",
+    year: "2024",
+    role: "Full-stack engineer",
+    summary:
+      "A real-time task board where updates appear instantly for the whole " +
+      "team, with comments and due-date reminders.",
+    tech: ["React", "WebSockets", "Node.js", "Redis"],
+    live: "https://example.com/taskpilot",
+    github: "https://github.com/AshanOdi/taskpilot",
+    caseStudy: {
+      problem: "Teams kept refreshing the page to see each other's changes.",
+      role: "Built the real-time sync layer and most of the UI.",
+      decisions: [
+        "WebSockets with Redis pub/sub so several servers can share updates.",
+        "Optimistic UI so moves feel instant, then confirm with the server.",
+      ],
+      challenges: ["Resolving conflicts when two people edit the same card."],
+      results: ["Updates reach every open board in under 200 ms."],
+    },
+  },
+  {
+    slug: "fitlog",
+    title: "FitLog",
+    domain: "fitlog.app",
+    preview: "dashboard",
+    year: "2024",
+    role: "Solo project",
+    summary:
+      "A workout tracker that works offline as an installable web app and " +
+      "syncs when you are back online.",
+    tech: ["React", "PWA", "IndexedDB", "Charts"],
+    live: "https://example.com/fitlog",
+    github: "https://github.com/AshanOdi/fitlog",
+    caseStudy: {
+      problem: "Gyms often have weak signal, so online-only apps lose workouts.",
+      role: "Designed and built the whole app.",
+      decisions: [
+        "Stored workouts locally in IndexedDB first, then synced in the background.",
+        "Made it a PWA so it installs like a native app without an app store.",
+      ],
+      challenges: ["Merging offline edits made on two devices."],
+      results: ["Zero lost workouts across three months of daily use."],
+    },
+  },
+  {
+    slug: "deploybot",
+    title: "DeployBot",
+    domain: "slack.com/apps/deploybot",
+    preview: "chat",
+    year: "2023",
+    role: "Internal tool",
+    summary:
+      "A Slack bot that runs deploys, shows build status and rolls back " +
+      "with one command.",
+    tech: ["Node.js", "Slack API", "AWS Lambda", "GitHub Actions"],
+    live: "https://example.com/deploybot",
+    github: "https://github.com/AshanOdi/deploybot",
+    caseStudy: {
+      problem: "Only two people knew how to deploy, which slowed every release.",
+      role: "Built the bot and wrote the team guide for using it.",
+      decisions: [
+        "Ran the bot on Lambda so it costs nothing between commands.",
+        "Required a confirm step before production deploys.",
+      ],
+      challenges: ["Slack's 3-second reply limit; solved with a quick ack and a follow-up message."],
+      results: ["Anyone on the team can deploy; releases went from weekly to daily."],
     },
   },
 ];
