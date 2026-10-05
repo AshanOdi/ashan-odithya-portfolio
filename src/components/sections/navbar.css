@@ -11,6 +11,7 @@
 
 /* The bar itself: a white rounded "pill" that matches the bento cards. */
 .nav-inner {
+  position: relative; /* the mobile menu is positioned against this bar */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,13 +72,83 @@
 }
 .nav-resume:hover { background: var(--accent); }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hamburger button: two bars that turn into an X when the menu is open.
+   Hidden on desktop. */
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--card);
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.25s ease;
+}
+.nav-toggle-bar:first-child { top: 16px; }
+.nav-toggle-bar:last-child { top: 22px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:first-child {
+  transform: translateY(3px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:last-child {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
 /* Visible keyboard focus for accessibility. */
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-/* Small screens: links are hidden for now; the mobile menu comes next step. */
+/* Small screens: the links become a dropdown card under the bar,
+   shown only while the menu is open. */
 @media (max-width: 900px) {
-  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(20, 24, 33, 0.1);
+  }
+  .nav-links.is-open {
+    display: flex;
+    animation: nav-drop 0.2s ease-out;
+  }
+  .nav-links a { padding: 14px 18px; font-size: 1.05rem; }
+}
+
+@keyframes nav-drop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav *, .nav *::before, .nav *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
