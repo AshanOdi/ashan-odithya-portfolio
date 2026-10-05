@@ -106,8 +106,21 @@
   margin-top: 40px;
 }
 
+.hero-apps {
+  max-width: 880px;
+  margin-top: 64px;
+}
+.hero-apps > p {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.hero-apps .marquee { --gap: 48px; }
+
 @media (max-width: 900px) {
   .hero { padding-top: 56px; padding-bottom: 56px; }
+  .hero-apps { margin-top: 48px; }
+  .hero-apps .marquee { --gap: 36px; }
 }
 
 /* Phones: drop "Currently" so the badge stays on one line. */

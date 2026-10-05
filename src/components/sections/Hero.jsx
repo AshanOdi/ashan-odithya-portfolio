@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { apps } from "../../data/apps.js";
+import Marquee from "../Marquee.jsx";
+import AppLogo from "../AppLogo.jsx";
 import "./hero.css";
 
 // All hero text lives here, so it is easy to edit in one place.
@@ -63,6 +66,16 @@ export default function Hero() {
       <div className="hero-actions">
         <a className="btn btn-primary" href="#projects">View projects</a>
         <a className="btn btn-ghost" href="#contact">Contact me</a>
+      </div>
+
+      {/* Grey logo strip of apps I've built (zyner-style "trusted by"). */}
+      <div className="hero-apps">
+        <p>Apps I’ve designed, built and shipped</p>
+        <Marquee label="Apps I've built" duration={35}>
+          {apps.map((app) => (
+            <AppLogo key={app.name} {...app} />
+          ))}
+        </Marquee>
       </div>
     </section>
   );
