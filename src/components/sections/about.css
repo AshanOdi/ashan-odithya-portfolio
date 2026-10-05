@@ -6,30 +6,6 @@
   align-items: center;
 }
 
-.about-photo {
-  position: relative;
-  isolation: isolate;
-}
-/* Soft accent glow peeking out from behind the photo. */
-.about-photo::before {
-  content: "";
-  position: absolute;
-  inset: 12% -8% -6% 12%;
-  background: radial-gradient(closest-side, var(--accent-soft), transparent);
-  filter: blur(24px);
-  z-index: -1;
-}
-.about-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  box-shadow: var(--lift);
-}
-
 .about-copy .section-head { margin-bottom: 24px; }
 
 .about-text {
@@ -67,5 +43,4 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .about-photo { max-width: 360px; }
 }

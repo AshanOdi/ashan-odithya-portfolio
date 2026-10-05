@@ -1,4 +1,5 @@
 import Icon from "../Icon.jsx";
+import Portrait from "./Portrait.jsx";
 import "./about.css";
 
 const paragraph =
@@ -19,17 +20,7 @@ const facts = [
 export default function About() {
   return (
     <section className="section about" id="about">
-      <div className="about-photo">
-        {/* width/height stop the page from jumping while the image loads */}
-        <img
-          src="/images/ashan.webp"
-          alt="Portrait of Ashan Odithya"
-          width="800"
-          height="1000"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
+      <Portrait />
 
       <div className="about-copy">
         <header className="section-head">
