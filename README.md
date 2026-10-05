@@ -55,11 +55,15 @@ portfolio/
 ## Roadmap
 
 - [x] Animated bento section
-- [ ] Navbar with light/dark mode
-- [ ] Hero section
-- [ ] About section
+- [x] Navbar with light/dark mode
+- [x] Hero section
+- [x] About section
+- [ ] Tech stack / skills section
 - [ ] Featured projects with case studies
 - [ ] Experience timeline
+- [ ] Education & certifications
+- [ ] "Now" section
+- [ ] Blog / notes
 - [ ] Contact section
 - [ ] Deploy to Vercel with a custom domain
 
