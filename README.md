@@ -1,0 +1,68 @@
+# Your Name | Software Engineer Portfolio
+
+My personal portfolio website, built to showcase my projects, skills and experience as a software engineer.
+
+**Live site:** https://yourname.dev *(coming soon)*
+
+## Tech stack
+
+- **React 18** for the UI
+- **Vite** for fast development and builds
+- **Pure CSS animations** for lightweight, smooth motion (no heavy animation libraries)
+- **Vercel** for hosting *(planned)*
+
+## Features
+
+- Animated bento grid section (tech stack orbit, CI/CD pipeline, terminal typing, API request flow)
+- Fully responsive, from mobile to large screens
+- Respects the "reduce motion" accessibility setting
+- Fast loading with minimal dependencies
+
+## Getting started
+
+Requirements: [Node.js](https://nodejs.org) 18 or newer.
+
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
+
+Then open http://localhost:5173 in your browser.
+
+| Command           | What it does                          |
+| ----------------- | ------------------------------------- |
+| `npm run dev`     | Start the local development server    |
+| `npm run build`   | Build the production version in dist/ |
+| `npm run preview` | Preview the production build locally  |
+
+## Project structure
+
+```
+portfolio/
+├── public/                  # Static files (images, favicon, resume PDF)
+├── src/
+│   ├── components/
+│   │   └── sections/        # Page sections (Hero, About, Projects...)
+│   ├── App.jsx              # Puts all sections together
+│   ├── main.jsx             # App entry point
+│   └── index.css            # Global styles
+├── index.html
+└── package.json
+```
+
+## Roadmap
+
+- [x] Animated bento section
+- [ ] Navbar with light/dark mode
+- [ ] Hero section
+- [ ] About section
+- [ ] Featured projects with case studies
+- [ ] Experience timeline
+- [ ] Contact section
+- [ ] Deploy to Vercel with a custom domain
+
+## License
+
+The code is released under the [MIT License](LICENSE). Personal content (text, photos, resume) belongs to me and may not be reused.
