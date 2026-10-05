@@ -49,3 +49,12 @@ body {
   letter-spacing: -0.035em;
 }
 .section-head p { margin: 0; color: var(--muted); font-size: 1.15rem; }
+
+/* Smooth scrolling for navbar links. scroll-margin-top stops the sticky
+   navbar from covering a section's heading after the jump. */
+html { scroll-behavior: smooth; }
+.section { scroll-margin-top: 96px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

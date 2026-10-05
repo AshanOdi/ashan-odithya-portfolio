@@ -1,4 +1,9 @@
+/* Sticky: the navbar scrolls with the page until it reaches the top,
+   then stays there. z-index keeps it above the sections. */
 .nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   max-width: 1200px;
   margin: 0 auto;
   padding: 16px 20px;
@@ -15,6 +20,15 @@
   border: 1px solid var(--line);
   border-radius: 999px;
   box-shadow: var(--rest);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* After scrolling: see-through "frosted glass" bar with a deeper shadow. */
+.is-scrolled .nav-inner {
+  background: color-mix(in srgb, var(--card) 75%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(20, 24, 33, 0.1);
 }
 
 .nav-logo {
