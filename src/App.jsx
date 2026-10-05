@@ -9,9 +9,9 @@ import Education from "./components/sections/Education.jsx";
 import Now from "./components/sections/Now.jsx";
 import Blog from "./components/sections/Blog.jsx";
 import Contact from "./components/sections/Contact.jsx";
+import Footer from "./components/sections/Footer.jsx";
 
-// Sections will be added here step by step:
-// Footer
+// All page sections, in the order they appear on the page.
 export default function App() {
   return (
     <>
@@ -28,6 +28,7 @@ export default function App() {
         <Blog />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }
