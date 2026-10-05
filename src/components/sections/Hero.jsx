@@ -2,24 +2,23 @@ import { useEffect, useState } from "react";
 import "./hero.css";
 
 // All hero text lives here, so it is easy to edit in one place.
-// TODO: replace the placeholder headline and intro with real details.
 const content = {
   name: "Ashan Odithya",
   role: "Software Engineer",
-  headlineStart: "I build software that is",
-  headlineAccent: "fast, reliable",
-  headlineEnd: "and easy to use.",
+  headlineStart: "I build",
+  headlineAccent: "full-stack products,",
+  headlineEnd: "from idea to cloud.",
   intro:
-    "From clean APIs to polished interfaces, I care about the whole journey: " +
-    "the first commit, the code review, and the product people actually use.",
+    "Software Engineer working across React, TypeScript, Node.js and AWS. " +
+    "I enjoy building practical products and owning them end to end, " +
+    "from the interface to the infrastructure.",
 };
 
-// Things shown one by one in the "Currently building" badge.
-// TODO: replace with what you are really building or learning.
-const building = [
-  "this portfolio with React + Vite",
-  "a fintech dashboard",
-  "my Kubernetes skills",
+// Things shown one by one in the "Currently exploring" badge.
+const exploring = [
+  "AWS & cloud architecture",
+  "backend & system design",
+  "AI / ML engineering",
 ];
 
 const ROTATE_MS = 3500; // how long each item stays on screen
@@ -33,7 +32,7 @@ export default function Hero() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % building.length); // 0, 1, 2, 0, 1, ...
+      setIndex((i) => (i + 1) % exploring.length); // 0, 1, 2, 0, 1, ...
     }, ROTATE_MS);
     return () => clearInterval(id); // stop the timer if Hero is removed
   }, []);
@@ -42,10 +41,10 @@ export default function Hero() {
     <section className="section hero" id="hero">
       <p className="hero-status">
         <span className="status-dot" aria-hidden="true" />
-        <span className="status-label">Currently building</span>
+        <span className="status-label">Currently exploring</span>
         {/* key changes every time, so React re-mounts the span and the
             fade-in animation plays again for each new item */}
-        <span key={index} className="status-item">{building[index]}</span>
+        <span key={index} className="status-item">{exploring[index]}</span>
       </p>
 
       <p className="hero-eyebrow">
