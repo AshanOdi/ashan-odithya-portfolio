@@ -30,3 +30,7 @@ Thumbs.db
 Claude.md
 SE_Portfolio_Blueprint.docx
 CLAUDE.md
+
+# Raw source photos (optimized WebP versions are committed instead)
+public/IMG_*
+public/images/*.png
