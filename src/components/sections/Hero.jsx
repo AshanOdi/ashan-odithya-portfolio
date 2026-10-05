@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./hero.css";
 
 // All hero text lives here, so it is easy to edit in one place.
@@ -13,9 +14,40 @@ const content = {
     "the first commit, the code review, and the product people actually use.",
 };
 
+// Things shown one by one in the "Currently building" badge.
+// TODO: replace with what you are really building or learning.
+const building = [
+  "this portfolio with React + Vite",
+  "a fintech dashboard",
+  "my Kubernetes skills",
+];
+
+const ROTATE_MS = 3500; // how long each item stays on screen
+
 export default function Hero() {
+  // Index of the item currently shown in the badge.
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    // Respect "reduce motion": keep the first item, do not rotate.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % building.length); // 0, 1, 2, 0, 1, ...
+    }, ROTATE_MS);
+    return () => clearInterval(id); // stop the timer if Hero is removed
+  }, []);
+
   return (
     <section className="section hero" id="hero">
+      <p className="hero-status">
+        <span className="status-dot" aria-hidden="true" />
+        <span className="status-label">Currently building</span>
+        {/* key changes every time, so React re-mounts the span and the
+            fade-in animation plays again for each new item */}
+        <span key={index} className="status-item">{building[index]}</span>
+      </p>
+
       <p className="hero-eyebrow">
         {content.name} <span aria-hidden="true">/</span> {content.role}
       </p>

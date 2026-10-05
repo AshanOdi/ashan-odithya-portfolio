@@ -21,6 +21,55 @@
   pointer-events: none;
 }
 
+/* "Currently building" badge: a small pill with a pulsing green dot. */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  margin: 0 0 28px;
+  padding: 8px 16px 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--rest);
+  font-size: 0.9rem;
+}
+
+.status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #12a35a;
+}
+/* The ring that grows and fades out around the dot, again and again. */
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #12a35a;
+  animation: status-pulse 2s ease-out infinite;
+}
+
+.status-label { color: var(--muted); }
+.status-item {
+  font-weight: 700;
+  color: var(--ink);
+  animation: status-in 0.5s ease-out;
+}
+
+@keyframes status-pulse {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(3); opacity: 0; }
+}
+@keyframes status-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .hero-eyebrow {
   margin: 0 0 20px;
   font-family: var(--font-mono);
@@ -57,4 +106,8 @@
 
 @media (max-width: 900px) {
   .hero { padding-top: 56px; padding-bottom: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot::after, .status-item { animation: none; }
 }
