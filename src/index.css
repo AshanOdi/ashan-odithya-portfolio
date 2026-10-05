@@ -1,14 +1,27 @@
+/* Design tokens: shared by every section. Change a value here and the
+   whole site updates. Dark mode will override these later. */
+:root {
+  --bg: #f4f5f8;
+  --card: #fbfbfd;
+  --ink: #141821;
+  --muted: #697080;
+  --line: #e4e7ee;
+  --accent: #2f6bff;
+  --accent-soft: #e6edff;
+
+  --glow: 0 0 0 4px var(--accent-soft), 0 10px 30px rgba(47, 107, 255, 0.25);
+  --rest: 0 4px 14px rgba(20, 24, 33, 0.05);
+
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+
 * { box-sizing: border-box; }
 
 body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: #f4f5f8;
-  color: #1a1d23;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
 }
-
-
-
-
-

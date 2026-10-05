@@ -1,18 +1,7 @@
 .bento {
-  --accent: #2f6bff;
-  --accent-soft: #e6edff;
-  --ink: #141821;
-  --muted: #697080;
-  --line: #e4e7ee;
-  --card: #fbfbfd;
-  --glow: 0 0 0 4px var(--accent-soft), 0 10px 30px rgba(47, 107, 255, 0.25);
-  --rest: 0 4px 14px rgba(20, 24, 33, 0.05);
-
   max-width: 1200px;
   margin: 0 auto;
   padding: 72px 20px;
-  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: var(--ink);
 }
 
 .bento-head {
@@ -189,7 +178,7 @@
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 22px 44px rgba(21, 25, 34, 0.2);
-  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
 }
 .term-bar { display: flex; gap: 6px; padding: 10px 12px; background: #1d222d; }
