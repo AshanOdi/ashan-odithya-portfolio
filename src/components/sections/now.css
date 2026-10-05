@@ -1,9 +1,9 @@
-.now-updated {
+.section-head .now-updated {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.9rem !important;
+  font-size: 0.9rem;
 }
 .now-dot {
   width: 8px;
