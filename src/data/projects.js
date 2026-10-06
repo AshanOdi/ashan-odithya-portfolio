@@ -1,42 +1,67 @@
 // Featured projects, shown in the horizontal scrolling section.
 // `domain` is shown in the mini browser bar of the preview, and `preview`
 // picks the mock UI drawn inside it: dashboard, board, chat, list, terminal.
-// TODO: real data - every project below is MOCK content. Replace the text,
-// links and numbers with your real projects, and later swap the mock
-// preview for a real screenshot.
+// `image` (optional) shows a real screenshot instead of the mock UI.
+// TODO: real data - every project except the Wellness portal is still MOCK
+// content. Replace them with your real projects.
 export const projects = [
+  // REAL project (from ~/ash-personal/Wellness-App/README.md).
   {
-    slug: "cloudledger",
-    title: "CloudLedger",
-    domain: "cloudledger.app",
-    preview: "dashboard",
+    slug: "wellness-portal",
+    title: "Wellness Allowance Portal",
+    domain: "Wellness Portal · internal tool",
+    image: "/projects/wellness/finance-dashboard.webp",
     year: "2026",
-    role: "Full-stack engineer",
+    role: "Software Engineering Intern",
+    company: "", // TODO: real data - company name
     summary:
-      "A serverless expense tracker for small teams, with receipt uploads, " +
-      "monthly reports and role-based access.",
-    tech: ["React", "TypeScript", "AWS Lambda", "DynamoDB", "S3"],
-    live: "https://example.com/cloudledger",
-    github: "https://github.com/AshanOdi/cloudledger",
+      "A serverless, mobile-first portal where employees claim their yearly " +
+      "wellness allowance, and HR and Finance review, approve and pay those " +
+      "claims. Built on AWS Lambda, DynamoDB and Cognito, with all " +
+      "infrastructure in Terraform.",
+    tech: ["React 19", "TypeScript", "AWS Lambda", "DynamoDB", "Cognito", "S3", "Terraform"],
+    live: null, // internal company tool: no public demo
+    github: "https://github.com/AshanOdi/Wellness-Allowance-Internship",
+    githubLabel: "Docs on GitHub",
+    gallery: [
+      { src: "/projects/wellness/employee-dashboard.webp", caption: "Employee dashboard: balances and claims" },
+      { src: "/projects/wellness/finance-dashboard.webp", caption: "Finance dashboard: monthly payouts" },
+      { src: "/projects/wellness/all-claims.webp", caption: "Finance: every claim, filterable by stage" },
+      { src: "/projects/wellness/admin-users.webp", caption: "Super admin: approving sign-ups and roles" },
+    ],
     caseStudy: {
       problem:
-        "Small teams tracked expenses in shared spreadsheets. Receipts got " +
-        "lost and month-end reports took hours to prepare by hand.",
+        "Every employee gets a yearly wellness allowance, split into " +
+        "preventative spending (gym, yoga, massage) and curative spending " +
+        "(doctor, dental, physio), with curative capped at 65%. Claims went " +
+        "through email and spreadsheets: nobody could see a claim's status, " +
+        "balances drifted, invoices were scattered across inboxes, and Finance " +
+        "had no single view of pending payouts.",
       role:
-        "Designed and built the whole product alone: UI, API, data model " +
-        "and the AWS infrastructure.",
+        "Software Engineering Intern in a small team, and the top contributor " +
+        "to the codebase (~600 of ~1,160 commits, Feb–Sep 2026). I built the " +
+        "serverless backend Lambdas, the DynamoDB data model and transactional " +
+        "balance logic, the claim state machine and server-side authorization, " +
+        "Terraform modules and the Bitbucket CI/CD pipeline with OIDC, the " +
+        "Cognito / Google SSO sign-up flow, React features and the mobile UI, " +
+        "plus unit tests and OpenAPI docs.",
       decisions: [
-        "Went serverless (Lambda + API Gateway) so the app costs almost nothing when idle.",
-        "Used DynamoDB single-table design to keep reads fast and predictable.",
-        "Uploaded receipts straight to S3 with pre-signed URLs, so files never pass through the API.",
+        "Fully serverless and pay-per-use, with one least-privilege Lambda per responsibility.",
+        "Files never pass through Lambda: the browser uploads straight to S3 with presigned URLs, into a temp bucket that empties itself.",
+        "Claim status changes are enforced on the server by a declarative state machine; any other change returns 409 Conflict.",
+        "DynamoDB keys designed from the queries, so “all employees for 2026” is a single query.",
+        "Every AWS resource in Terraform, with dev and production built from the same modules.",
       ],
       challenges: [
-        "Keeping report queries cheap in DynamoDB; solved with a monthly summary item updated on every write.",
-        "Handling large image uploads on slow mobile networks.",
+        "Keeping balances correct when several people act on the same claim at once: every money move is a DynamoDB transaction with conditions, so conflicts are cancelled safely.",
+        "DynamoDB transactions can't include S3, so submitting a claim follows a saga: commit, copy the files, and roll back with a compensating transaction if the copy fails.",
+        "A yearly rollover job that must never double-apply: a year marker plus conditional writes make every re-run safe.",
       ],
       results: [
-        "Month-end report time dropped from ~3 hours to under 5 minutes.",
-        "Runs for under $5 per month on AWS.",
+        "Replaced email and spreadsheets with one self-service portal for employees, HR, Finance and admins.",
+        "169 unit tests run on every pipeline; a failing test blocks the deploy.",
+        "17 Lambda functions and 18 API routes, all defined in Terraform and documented with OpenAPI 3.",
+        "Safe production deploys: short-lived OIDC credentials, automatic DynamoDB backups before every apply and a post-deploy smoke test.",
       ],
     },
   },
