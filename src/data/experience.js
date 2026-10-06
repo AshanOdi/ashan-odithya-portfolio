@@ -1,6 +1,6 @@
 // Work history, newest first. Write achievements as impact, not duties:
 // "what changed because of your work", with numbers where possible.
-// `link` (optional) links the company name to its website.
+// `link` (optional) links the company name to its website; `tech` is optional.
 export const experience = [
   {
     role: "Software Engineering Intern",
@@ -18,5 +18,16 @@ export const experience = [
       "Wrote unit tests and OpenAPI docs; the project's 169 tests run on every pipeline.",
     ],
     tech: ["React", "TypeScript", "Node.js", "AWS Lambda", "DynamoDB", "Terraform"],
+  },
+  {
+    role: "Computer Engineering Student",
+    company: "University of Jaffna",
+    link: null,
+    period: "2022 — 2026",
+    location: "Sri Lanka",
+    achievements: [
+      "BSc (Hons) in Computer Engineering, Faculty of Engineering. Degree completed; graduation ceremony pending.",
+      "Built full-stack side projects alongside my studies: Kaalagune, Forge, POP Cosmetics and PopcornPicks.",
+    ],
   },
 ];

@@ -36,11 +36,13 @@ export default function Experience() {
                 ))}
               </ul>
 
-              <ul className="tl-tech">
-                {job.tech.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
+              {job.tech?.length > 0 && (
+                <ul className="tl-tech">
+                  {job.tech.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           </li>
         ))}
