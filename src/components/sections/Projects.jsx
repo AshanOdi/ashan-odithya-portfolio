@@ -87,11 +87,13 @@ function ProjectCard({ project, number, variant, onOpen }) {
             <>
               {project.live && (
                 <a
+                  className="project-live"
                   href={project.live}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`${project.title} live demo`}
                 >
+                  <span className="live-dot" aria-hidden="true" />
                   Live <Icon name="arrowUpRight" size={14} />
                 </a>
               )}
@@ -103,7 +105,8 @@ function ProjectCard({ project, number, variant, onOpen }) {
             <>
               {/* Internal tools have no public demo, so `live` is optional. */}
               {project.live && (
-                <a href={project.live} target="_blank" rel="noreferrer">
+                <a className="project-live" href={project.live} target="_blank" rel="noreferrer">
+                  <span className="live-dot" aria-hidden="true" />
                   Live demo <Icon name="arrowUpRight" size={14} />
                 </a>
               )}

@@ -125,6 +125,25 @@
 .project-open svg { transition: transform 0.2s; }
 .project-open:hover svg { transform: translateX(3px); }
 
+/* Live demo: a soft blue pill with a green "it's live" dot. */
+.project-links a.project-live {
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+.project-links a.project-live:hover { background: var(--accent); color: #fff; }
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #12a35a;
+  box-shadow: 0 0 0 3px rgba(18, 163, 90, 0.2);
+}
+
 .project-links a:focus-visible,
 .project-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
