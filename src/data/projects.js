@@ -114,7 +114,7 @@ export const projects = [
     slug: "popcornpicks",
     title: "PopcornPicks",
     domain: "popcorn-picks-three.vercel.app",
-    image: "/projects/popcornpicks/home.webp",
+    image: "/projects/popcornpicks/home-dark.webp",
     year: "2026",
     role: "Solo project",
     summary:
@@ -124,7 +124,10 @@ export const projects = [
     live: "https://popcorn-picks-three.vercel.app",
     github: "https://github.com/AshanOdi/PopcornPicks",
     gallery: [
-      { src: "/projects/popcornpicks/home.webp", caption: "Home: “#1 Trending” hero banner and trending row" },
+      { src: "/projects/popcornpicks/home-dark.webp", width: 1440, height: 688, caption: "Home: “#1 Trending” hero banner, search and trending row" },
+      { src: "/projects/popcornpicks/details.webp", width: 1440, height: 687, caption: "Movie details with rating, trailer and top cast" },
+      { src: "/projects/popcornpicks/mobile-home.webp", width: 374, height: 813, mobile: true, caption: "Phone: home with the floating bottom bar" },
+      { src: "/projects/popcornpicks/mobile-details.webp", width: 373, height: 815, mobile: true, caption: "Phone: movie details" },
     ],
     caseStudy: {
       problem:

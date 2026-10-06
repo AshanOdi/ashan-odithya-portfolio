@@ -62,8 +62,14 @@ export default function CaseStudy({ project, onClose }) {
         {project.gallery && (
           <div className="cs-gallery">
             {project.gallery.map((shot) => (
-              <figure key={shot.src}>
-                <img src={shot.src} alt={shot.caption} width="1440" height="900" loading="lazy" />
+              <figure key={shot.src} className={shot.mobile ? "is-mobile" : undefined}>
+                <img
+                  src={shot.src}
+                  alt={shot.caption}
+                  width={shot.width ?? 1440}
+                  height={shot.height ?? 900}
+                  loading="lazy"
+                />
                 <figcaption>{shot.caption}</figcaption>
               </figure>
             ))}

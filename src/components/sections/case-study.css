@@ -79,11 +79,16 @@
   scroll-snap-type: x mandatory;
   scroll-padding: 0 44px;
 }
+.cs-gallery { align-items: flex-start; }
 .cs-gallery figure {
   flex: 0 0 82%;
   margin: 0;
   scroll-snap-align: start;
 }
+/* Phone screenshots are tall and narrow: show them at phone-like width,
+   with rounder corners like a device screen. */
+.cs-gallery figure.is-mobile { flex: 0 0 210px; }
+.cs-gallery figure.is-mobile img { border-radius: 22px; }
 .cs-gallery img {
   display: block;
   width: 100%;
