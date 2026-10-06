@@ -4,7 +4,7 @@ import "./contact.css";
 
 const links = [
   { label: "Email", value: site.email, href: `mailto:${site.email}` },
-  { label: "LinkedIn", value: "Connect on LinkedIn", href: site.linkedin },
+  { label: "LinkedIn", value: "in/ashan-odithya-sirisena", href: site.linkedin },
   { label: "GitHub", value: "github.com/AshanOdi", href: site.github },
 ];
 

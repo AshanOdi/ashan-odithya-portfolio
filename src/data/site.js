@@ -2,11 +2,10 @@
 // Change them here once and every section updates.
 export const site = {
   name: "Ashan Odithya",
-  // TODO: real data - your public contact email.
-  email: "hello@example.com",
+  email: "ashanuni25@gmail.com",
   github: "https://github.com/AshanOdi",
-  // TODO: real data - your LinkedIn profile URL.
-  linkedin: "https://www.linkedin.com/in/your-profile",
+  linkedin: "https://www.linkedin.com/in/ashan-odithya-sirisena/",
+  medium: "https://medium.com/@ashanuni25",
   resume: "/resume.pdf",
   // Formspree form that receives contact messages (https://formspree.io).
   formEndpoint: "https://formspree.io/f/xvgqndyb",

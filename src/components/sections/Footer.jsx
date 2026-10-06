@@ -4,6 +4,7 @@ import "./footer.css";
 const socials = [
   { label: "GitHub", href: site.github },
   { label: "LinkedIn", href: site.linkedin },
+  { label: "Medium", href: site.medium },
   { label: "Email", href: `mailto:${site.email}` },
 ];
 
