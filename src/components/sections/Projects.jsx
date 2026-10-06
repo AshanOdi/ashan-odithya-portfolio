@@ -67,7 +67,8 @@ function ProjectCard({ project, number, variant, onOpen }) {
       <div className="project-body">
         <p className="project-meta">
           {String(number).padStart(2, "0")} <span>/</span> {project.year} <span>/</span> {project.role}
-          {project.company && <> @ {project.company}</>}
+          {/* Cards use the short company name; the case study shows the full one. */}
+          {project.company && <> @ {project.companyShort ?? project.company}</>}
         </p>
         <h3>{project.title}</h3>
         <p className="project-summary">{project.summary}</p>

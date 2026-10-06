@@ -2,8 +2,8 @@
 // `domain` is shown in the mini browser bar of the preview, and `preview`
 // picks the mock UI drawn inside it: dashboard, board, chat, list, terminal.
 // `image` (optional) shows a real screenshot instead of the mock UI.
-// TODO: real data - every project except the Wellness portal is still MOCK
-// content. Replace them with your real projects.
+// Every project here is real; the details come from each project's README
+// in ~/ash-personal/. `live: null` hides the live demo link.
 export const projects = [
   // REAL project (from ~/ash-personal/Wellness-App/README.md).
   {
@@ -13,7 +13,8 @@ export const projects = [
     image: "/projects/wellness/finance-dashboard.webp",
     year: "2026",
     role: "Software Engineering Intern",
-    company: "", // TODO: real data - company name
+    company: "WealthOS Asia Pacific (Private) Limited",
+    companyShort: "WealthOS",
     summary:
       "A serverless, mobile-first portal where employees claim their yearly " +
       "wellness allowance, and HR and Finance review, approve and pay those " +
@@ -65,183 +66,167 @@ export const projects = [
       ],
     },
   },
+  // REAL project (from ~/ash-personal/Weather-App/README.md).
   {
-    slug: "devpulse",
-    title: "DevPulse",
-    domain: "devpulse.dev",
-    preview: "board",
+    slug: "kaalagune",
+    title: "Kaalagune",
+    domain: "kaalagune-app.vercel.app",
+    image: "/projects/kaalagune/dashboard.webp",
     year: "2025",
-    role: "Frontend lead",
+    role: "Solo project",
     summary:
-      "A dashboard that turns GitHub activity into simple team health " +
-      "metrics: review time, PR size and deploy frequency.",
-    tech: ["React", "Node.js", "PostgreSQL", "GitHub API"],
-    live: "https://example.com/devpulse",
-    github: "https://github.com/AshanOdi/devpulse",
+      "A secure weather dashboard with live conditions, a 24-hour chart, " +
+      "5-day forecast, air quality and smart tips. Kaalagune means " +
+      "“the weather” in Sinhala.",
+    tech: ["React 19", "Vite", "Tailwind CSS", "Auth0", "OpenWeather API"],
+    live: "https://kaalagune-app.vercel.app/",
+    github: "https://github.com/AshanOdi/Weather-App",
+    gallery: [
+      { src: "/projects/kaalagune/dashboard.webp", caption: "Dashboard: saved cities, live weather, tips and 24-hour chart" },
+    ],
     caseStudy: {
       problem:
-        "Engineering leads had no quick way to see where pull requests got stuck.",
+        "Most weather apps bury the useful bits. I wanted one secure dashboard " +
+        "that shows what matters at a glance (conditions, the next 24 hours, " +
+        "air quality) in plain language, for every city you care about.",
       role:
-        "Led the frontend, built the charts and worked with one backend engineer on the API.",
+        "Built the whole app solo: UI and motion, the OpenWeather API layer, " +
+        "forecast processing, the Auth0 security setup and Vercel deployment.",
       decisions: [
-        "Synced GitHub data on a schedule into PostgreSQL instead of calling the API on every page load.",
-        "Kept charts lightweight with plain SVG instead of a heavy chart library.",
+        "Auth0 Universal Login with PKCE and MFA, so the app never sees a password; plus a guest mode for quick visitors.",
+        "All API calls go through one cached client: weather is reused for 5 minutes, city search for 24 hours.",
+        "Forecast and air quality load in parallel; if air quality fails, the rest of the dashboard still loads.",
+        "Data is always fetched in metric and converted only for display, so one cache serves °C and °F users.",
       ],
       challenges: [
-        "Staying inside GitHub API rate limits for large organisations.",
+        "Showing each city's correct local time from UTC timestamps plus the city's timezone offset.",
+        "Turning 40 three-hourly data points into a clean 24-hour view and 5 daily summaries, grouped by the city's local date.",
+        "A hand-built SVG temperature chart (no chart library) that resizes with its card and scrolls on phones.",
       ],
       results: [
-        "Average PR review time on the pilot team fell by 30% in two months.",
+        "Live on Vercel, deployed automatically on every push to main.",
+        "Invite-only accounts with multi-factor authentication, and sessions that survive a refresh.",
       ],
     },
   },
+  // REAL project (from ~/ash-personal/PopcornPicks/README.md).
   {
-    slug: "askdocs",
-    title: "AskDocs",
-    domain: "askdocs.ai",
-    preview: "chat",
-    year: "2025",
+    slug: "popcornpicks",
+    title: "PopcornPicks",
+    domain: "popcorn-picks-three.vercel.app",
+    image: "/projects/popcornpicks/home.webp",
+    year: "2026",
     role: "Solo project",
     summary:
-      "Upload PDFs and ask questions about them in plain language. Answers " +
-      "include the exact page they came from.",
-    tech: ["Node.js", "LLM API", "Vector search", "AWS S3"],
-    live: "https://example.com/askdocs",
-    github: "https://github.com/AshanOdi/askdocs",
+      "A responsive movie explorer: trending films, search with infinite " +
+      "scroll, filters, trailers and favourites, powered by live TMDb data.",
+    tech: ["React 19", "TypeScript", "Material UI", "TMDb API", "Vite"],
+    live: "https://popcorn-picks-three.vercel.app",
+    github: "https://github.com/AshanOdi/PopcornPicks",
+    gallery: [
+      { src: "/projects/popcornpicks/home.webp", caption: "Home: “#1 Trending” hero banner and trending row" },
+    ],
     caseStudy: {
       problem:
-        "Finding one answer inside long policy documents took too long.",
-      role: "Built it end to end as a learning project in AI engineering.",
+        "Build a movie discovery app that feels like a real streaming product: " +
+        "fast search, rich movie details and a polished experience on both " +
+        "phones and desktops.",
+      role:
+        "Built it solo with React and TypeScript (strict mode): architecture, " +
+        "UI, TMDb integration and Vercel deployment.",
       decisions: [
-        "Split documents into overlapping chunks and stored embeddings for search.",
-        "Always returned page references so users can check every answer.",
+        "Real TMDb login (request token → session) instead of a mock, plus a guest mode.",
+        "Debounced search (500 ms) with infinite scroll; browsing lists use Load More instead.",
+        "Discover filters live in the URL, so filtered views can be shared and the Back button works.",
+        "One request per details page (details, cast and videos together) instead of three.",
       ],
       challenges: [
-        "Reducing wrong answers; added a rule to say “not found” when sources are weak.",
+        "Clear layers: pages and components never call axios directly; typed API functions and custom hooks sit in between.",
+        "Friendly errors for every failure (network, 401, 404, 429) with a Try again button.",
       ],
       results: [
-        "Answers typical questions in under 3 seconds with a source link.",
+        "Live on Vercel, with light and dark mode that follows the system setting.",
+        "Strict TypeScript: the build fails on any type error.",
       ],
     },
   },
+  // REAL project (from ~/ash-personal/Jira/jiraclone-*/README.md).
   {
-    slug: "shopflow",
-    title: "ShopFlow",
-    domain: "shopflow.store",
-    preview: "list",
+    slug: "forge",
+    title: "Forge",
+    domain: "forge. · Issue Tracker",
+    image: "/projects/forge/board.webp",
     year: "2025",
-    role: "Full-stack engineer",
-    summary:
-      "An online store with a fast product catalogue, secure checkout and " +
-      "an admin panel for orders and stock.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    live: "https://example.com/shopflow",
-    github: "https://github.com/AshanOdi/shopflow",
-    caseStudy: {
-      problem: "A local shop sold only through social media and lost track of orders.",
-      role: "Built the storefront, checkout and admin panel end to end.",
-      decisions: [
-        "Used Stripe Checkout so card data never touches our servers.",
-        "Cached product pages so the catalogue loads instantly.",
-      ],
-      challenges: ["Keeping stock correct when two people buy the last item at once."],
-      results: ["Online orders grew to about 40% of total sales in three months."],
-    },
-  },
-  {
-    slug: "infrakit",
-    title: "InfraKit",
-    domain: "github.com/AshanOdi/infrakit",
-    preview: "terminal",
-    year: "2025",
-    role: "Open source",
-    summary:
-      "Reusable AWS CDK templates to launch a secure API, database and CI/CD " +
-      "pipeline in minutes.",
-    tech: ["AWS CDK", "TypeScript", "GitHub Actions", "IAM"],
-    live: "https://example.com/infrakit",
-    github: "https://github.com/AshanOdi/infrakit",
-    caseStudy: {
-      problem: "Every new project repeated the same days of AWS setup by hand.",
-      role: "Designed and maintain the templates and their documentation.",
-      decisions: [
-        "Least-privilege IAM roles by default for every template.",
-        "Everything as code, so environments can be rebuilt from scratch.",
-      ],
-      challenges: ["Keeping templates simple while still covering real needs."],
-      results: ["New environment setup went from ~2 days to under 30 minutes."],
-    },
-  },
-  {
-    slug: "taskpilot",
-    title: "TaskPilot",
-    domain: "taskpilot.io",
-    preview: "board",
-    year: "2024",
-    role: "Full-stack engineer",
-    summary:
-      "A real-time task board where updates appear instantly for the whole " +
-      "team, with comments and due-date reminders.",
-    tech: ["React", "WebSockets", "Node.js", "Redis"],
-    live: "https://example.com/taskpilot",
-    github: "https://github.com/AshanOdi/taskpilot",
-    caseStudy: {
-      problem: "Teams kept refreshing the page to see each other's changes.",
-      role: "Built the real-time sync layer and most of the UI.",
-      decisions: [
-        "WebSockets with Redis pub/sub so several servers can share updates.",
-        "Optimistic UI so moves feel instant, then confirm with the server.",
-      ],
-      challenges: ["Resolving conflicts when two people edit the same card."],
-      results: ["Updates reach every open board in under 200 ms."],
-    },
-  },
-  {
-    slug: "fitlog",
-    title: "FitLog",
-    domain: "fitlog.app",
-    preview: "dashboard",
-    year: "2024",
     role: "Solo project",
     summary:
-      "A workout tracker that works offline as an installable web app and " +
-      "syncs when you are back online.",
-    tech: ["React", "PWA", "IndexedDB", "Charts"],
-    live: "https://example.com/fitlog",
-    github: "https://github.com/AshanOdi/fitlog",
+      "A lightweight, Jira-style issue tracker: a Kanban board, dashboard " +
+      "charts and a full status history for every customer issue.",
+    tech: ["React 19", "Tailwind CSS", "Spring Boot", "Java", "MySQL"],
+    live: null, // TODO: real data - add the live link if it is deployed
+    github: "https://github.com/AshanOdi/jiraclone-Frontend",
+    gallery: [
+      { src: "/projects/forge/board.webp", caption: "Kanban board with a Move menu for the next valid status" },
+      { src: "/projects/forge/dashboard.webp", caption: "Dashboard: counts and charts by status and type" },
+      { src: "/projects/forge/detail.webp", caption: "Issue detail with the status history timeline" },
+      { src: "/projects/forge/create.webp", caption: "Creating a new issue" },
+    ],
     caseStudy: {
-      problem: "Gyms often have weak signal, so online-only apps lose workouts.",
-      role: "Designed and built the whole app.",
+      problem:
+        "Support teams need a simple way to log customer issues and move " +
+        "them through a clear workflow, without the weight of a full Jira setup.",
+      role:
+        "Built both halves solo: the React frontend and the Spring Boot REST " +
+        "API, split into two repositories.",
       decisions: [
-        "Stored workouts locally in IndexedDB first, then synced in the background.",
-        "Made it a PWA so it installs like a native app without an app store.",
+        "A fixed support workflow (Open → In progress → Waiting on client → Resolved); the board only offers valid next statuses.",
+        "Every status change is saved as a history record, so each issue keeps a full audit trail.",
+        "Two database setups: MySQL by default, and an H2 dev profile so the API runs with no database install.",
+        "Own small UI components (Button, Card, Badge) in a shadcn/ui style, on Tailwind design tokens.",
       ],
-      challenges: ["Merging offline edits made on two devices."],
-      results: ["Zero lost workouts across three months of daily use."],
+      challenges: [
+        "Keeping the frontend safe against unexpected API responses, with route guards and empty states.",
+        "Cascading history records cleanly when an issue is deleted.",
+      ],
+      results: [
+        "A full-stack app across two repos: a React SPA and a Java 24 / Spring Boot 3.5 API.",
+      ],
     },
   },
+  // REAL project (from ~/ash-personal/e-commerce/*/README.md).
   {
-    slug: "deploybot",
-    title: "DeployBot",
-    domain: "slack.com/apps/deploybot",
-    preview: "chat",
-    year: "2023",
-    role: "Internal tool",
+    slug: "pop-cosmetics",
+    title: "POP Cosmetics",
+    domain: "POP Cosmetics · store",
+    preview: "list", // TODO: real data - add a screenshot (no live demo yet)
+    year: "2025",
+    role: "Solo project",
     summary:
-      "A Slack bot that runs deploys, shows build status and rolls back " +
-      "with one command.",
-    tech: ["Node.js", "Slack API", "AWS Lambda", "GitHub Actions"],
-    live: "https://example.com/deploybot",
-    github: "https://github.com/AshanOdi/deploybot",
+      "A full MERN e-commerce store: catalog, cart and checkout, orders, " +
+      "reviews, wishlists, an admin dashboard and an AI shopping concierge.",
+    tech: ["React 19", "Node.js", "Express", "MongoDB", "Gemini API"],
+    live: null, // TODO: real data - add the live link if it is deployed
+    github: "https://github.com/AshanOdi/E-Commerce-Platform-using-Mern-frontend",
     caseStudy: {
-      problem: "Only two people knew how to deploy, which slowed every release.",
-      role: "Built the bot and wrote the team guide for using it.",
+      problem:
+        "Build a complete online store end to end, from the product catalog " +
+        "to checkout and an admin dashboard, the way a real shop needs it.",
+      role:
+        "Built the React storefront, the Express + MongoDB API and the admin " +
+        "dashboard solo, across two repositories.",
       decisions: [
-        "Ran the bot on Lambda so it costs nothing between commands.",
-        "Required a confirm step before production deploys.",
+        "Stateless JWT auth with bcrypt hashing, and rate limits on login, the contact form and AI requests.",
+        "Atomic stock updates, so two orders can never oversell the last unit.",
+        "The AI concierge only sees in-stock products and must answer with real product IDs, which the server re-checks.",
+        "A mock payment gateway with an HMAC-signed webhook, to show a real checkout flow without a payment provider.",
       ],
-      challenges: ["Slack's 3-second reply limit; solved with a quick ack and a follow-up message."],
-      results: ["Anyone on the team can deploy; releases went from weekly to daily."],
+      challenges: [
+        "Keeping the cart honest: it re-validates against the live catalog and flags items that went out of stock.",
+        "Re-issuing the login token whenever profile details change, so the UI never shows stale data.",
+      ],
+      results: [
+        "Customer storefront plus a full admin dashboard for products, users and orders.",
+        "AI recommendations grounded in the real catalog, using Google Gemini.",
+      ],
     },
   },
 ];
