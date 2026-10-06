@@ -61,12 +61,13 @@ function ProjectCard({ project, number, variant, onOpen }) {
   return (
     <article className={`project-card is-${variant}`} onMouseMove={onMouseMove}>
       <div className="project-preview">
-        <ProjectPreview domain={project.domain} type={project.preview} />
+        <ProjectPreview domain={project.domain} type={project.preview} image={project.image} />
       </div>
 
       <div className="project-body">
         <p className="project-meta">
           {String(number).padStart(2, "0")} <span>/</span> {project.year} <span>/</span> {project.role}
+          {project.company && <> @ {project.company}</>}
         </p>
         <h3>{project.title}</h3>
         <p className="project-summary">{project.summary}</p>
@@ -87,11 +88,14 @@ function ProjectCard({ project, number, variant, onOpen }) {
             </a>
           ) : (
             <>
-              <a href={project.live} target="_blank" rel="noreferrer">
-                Live demo <Icon name="arrowUpRight" size={14} />
-              </a>
+              {/* Internal tools have no public demo, so `live` is optional. */}
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noreferrer">
+                  Live demo <Icon name="arrowUpRight" size={14} />
+                </a>
+              )}
               <a href={project.github} target="_blank" rel="noreferrer">
-                GitHub <Icon name="arrowUpRight" size={14} />
+                {project.githubLabel ?? "GitHub"} <Icon name="arrowUpRight" size={14} />
               </a>
             </>
           )}

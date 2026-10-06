@@ -69,6 +69,34 @@
   color: var(--accent);
 }
 
+/* Screenshots: a sideways-scrolling row inside the dialog. */
+.cs-gallery {
+  display: flex;
+  gap: 14px;
+  margin: 28px -44px 0;
+  padding: 0 44px 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 44px;
+}
+.cs-gallery figure {
+  flex: 0 0 82%;
+  margin: 0;
+  scroll-snap-align: start;
+}
+.cs-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.cs-gallery figcaption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 .cs-sections {
   display: grid;
   gap: 28px;
@@ -116,6 +144,7 @@
 
 @media (max-width: 600px) {
   .cs-inner { padding: 64px 22px 28px; }
+  .cs-gallery { margin: 24px -22px 0; padding: 0 22px 8px; scroll-padding: 0 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

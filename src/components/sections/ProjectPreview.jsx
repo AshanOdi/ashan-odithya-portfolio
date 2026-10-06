@@ -1,8 +1,8 @@
 import "./project-preview.css";
 
-// A mini browser window with a simple mock of the app's UI inside.
-// It stands in for a screenshot until real images are added.
-export default function ProjectPreview({ domain, type }) {
+// A mini browser window. Inside it shows the project's real screenshot
+// when there is one (`image`), otherwise a simple mock of the app's UI.
+export default function ProjectPreview({ domain, type, image }) {
   const Body = bodies[type] ?? DashboardUI;
 
   return (
@@ -11,9 +11,15 @@ export default function ProjectPreview({ domain, type }) {
         <span className="pp-dots"><i /><i /><i /></span>
         <span className="pp-url">{domain}</span>
       </div>
-      <div className="pp-body">
-        <Body />
-      </div>
+      {image ? (
+        <div className="pp-shot">
+          <img src={image} alt="" width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+      ) : (
+        <div className="pp-body">
+          <Body />
+        </div>
+      )}
     </div>
   );
 }

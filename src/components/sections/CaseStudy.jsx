@@ -47,6 +47,7 @@ export default function CaseStudy({ project, onClose }) {
 
         <p className="cs-meta">
           Case study <span>/</span> {project.year} <span>/</span> {project.role}
+          {project.company && <> @ {project.company}</>}
         </p>
         <h2 id="case-study-title">{project.title}</h2>
         <p className="cs-summary">{project.summary}</p>
@@ -57,6 +58,18 @@ export default function CaseStudy({ project, onClose }) {
           ))}
         </ul>
 
+        {/* Real screenshots, when the project has them. */}
+        {project.gallery && (
+          <div className="cs-gallery">
+            {project.gallery.map((shot) => (
+              <figure key={shot.src}>
+                <img src={shot.src} alt={shot.caption} width="1440" height="900" loading="lazy" />
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
+
         <div className="cs-sections">
           <Block number="01" title="The problem"><p>{caseStudy.problem}</p></Block>
           <Block number="02" title="My role"><p>{caseStudy.role}</p></Block>
@@ -66,11 +79,18 @@ export default function CaseStudy({ project, onClose }) {
         </div>
 
         <div className="cs-links">
-          <a className="btn btn-primary" href={project.live} target="_blank" rel="noreferrer">
-            Live demo ↗
-          </a>
-          <a className="btn btn-ghost" href={project.github} target="_blank" rel="noreferrer">
-            GitHub ↗
+          {project.live && (
+            <a className="btn btn-primary" href={project.live} target="_blank" rel="noreferrer">
+              Live demo ↗
+            </a>
+          )}
+          <a
+            className={project.live ? "btn btn-ghost" : "btn btn-primary"}
+            href={project.github}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {project.githubLabel ?? "GitHub"} ↗
           </a>
         </div>
       </div>

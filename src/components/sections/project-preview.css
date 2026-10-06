@@ -34,6 +34,17 @@
   text-overflow: ellipsis;
 }
 
+/* Real screenshot: fills the window from the top-left, like a cropped
+   view of the app. */
+.pp-shot { flex: 1; min-height: 0; overflow: hidden; background: var(--bg); }
+.pp-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
 .pp-body { flex: 1; min-height: 0; padding: 14px; overflow: hidden; }
 
 /* Shared "skeleton" pieces: grey bars, with accent for the highlighted one. */
