@@ -83,7 +83,7 @@ export default function Hero() {
 
       {/* Grey logo strip of apps I've built (zyner-style "trusted by"). */}
       <div className="hero-apps">
-        <p>Apps I’ve designed, built and shipped</p>
+        <p>Apps I’ve designed and built,</p>
         <Marquee label="Apps I've built" duration={35}>
           {apps.map((app) => (
             <AppLogo key={app.name} {...app} />
