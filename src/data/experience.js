@@ -1,42 +1,22 @@
 // Work history, newest first. Write achievements as impact, not duties:
 // "what changed because of your work", with numbers where possible.
-// TODO: real data - every entry below is MOCK content.
+// `link` (optional) links the company name to its website.
 export const experience = [
   {
-    role: "Software Engineer",
-    company: "Company Name",
-    link: "https://example.com",
-    period: "2024 — Present",
-    location: "Colombo, Sri Lanka",
-    current: true,
-    achievements: [
-      "Built React + TypeScript features used by thousands of customers every day.",
-      "Designed Node.js APIs on AWS Lambda, cutting average response time by 35%.",
-      "Set up CI/CD with GitHub Actions, taking deploys from weekly to daily.",
-    ],
-    tech: ["React", "TypeScript", "Node.js", "AWS"],
-  },
-  {
-    role: "Associate Software Engineer",
-    company: "Previous Company",
-    link: "https://example.com",
-    period: "2023 — 2024",
-    location: "Sri Lanka",
-    achievements: [
-      "Shipped a customer dashboard from design to production in 8 weeks.",
-      "Wrote integration tests that caught regressions before every release.",
-    ],
-    tech: ["React", "Node.js", "PostgreSQL"],
-  },
-  {
     role: "Software Engineering Intern",
-    company: "Internship Company",
-    link: "https://example.com",
-    period: "2022 — 2023",
+    company: "WealthOS Asia Pacific (Private) Limited",
+    link: null,
+    period: "Nov 2025 — Present",
     location: "Sri Lanka",
+    current: true,
+    // From the Wellness Allowance Portal README ("My Role").
     achievements: [
-      "Built internal tools that saved the support team hours each week.",
+      "Top contributor to the Wellness Allowance Portal (~600 of ~1,160 commits): a serverless platform where employees claim their wellness allowance and HR and Finance approve and pay it.",
+      "Built serverless Node.js Lambdas, the DynamoDB data model and the transactional balance logic that keeps balances correct when people act on the same claim at once.",
+      "Wrote Terraform modules for dev and production, and a Bitbucket CI/CD pipeline with OIDC, automatic database backups and post-deploy smoke tests.",
+      "Integrated Cognito with Google Workspace SSO, and built React features and the mobile-friendly UI.",
+      "Wrote unit tests and OpenAPI docs; the project's 169 tests run on every pipeline.",
     ],
-    tech: ["JavaScript", "Express", "MongoDB"],
+    tech: ["React", "TypeScript", "Node.js", "AWS Lambda", "DynamoDB", "Terraform"],
   },
 ];

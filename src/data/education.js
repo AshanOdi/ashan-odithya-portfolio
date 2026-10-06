@@ -1,30 +1,14 @@
-// TODO: real data - university name, years and certifications are MOCK.
+// Education, newest first. `note` is optional.
 export const education = [
   {
-    degree: "BSc (Hons) in Computer Engineering",
-    school: "University Name",
-    period: "2019 — 2023",
-    note: "Focus on software engineering, networks and distributed systems.",
+    degree: "Computer Engineering",
+    school: "Department of Computer Engineering, Faculty of Engineering, University of Jaffna",
+    period: "2022 — 2026",
   },
 ];
 
-export const certifications = [
-  {
-    name: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    year: "2025",
-    link: "https://example.com/credential",
-  },
-  {
-    name: "AWS Certified Developer – Associate",
-    issuer: "Amazon Web Services",
-    year: "In progress",
-    link: null,
-  },
-  {
-    name: "Meta Front-End Developer",
-    issuer: "Coursera",
-    year: "2023",
-    link: "https://example.com/credential",
-  },
-];
+// Certifications appear in their own column as soon as this list has at
+// least one entry. Example:
+// { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services",
+//   year: "2026", link: "https://www.credly.com/badges/..." },
+export const certifications = [];
