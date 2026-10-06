@@ -12,4 +12,11 @@ export const education = [
 // least one entry. Example:
 // { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services",
 //   year: "2026", link: "https://www.credly.com/badges/..." },
-export const certifications = [];
+export const certifications = [
+  {
+    name: "AWS Certified Solutions Architect – Associate",
+    issuer: "Amazon Web Services",
+    year: "In progress · target Dec 2026",
+    link: null, // add the Credly link once it is issued
+  },
+];
