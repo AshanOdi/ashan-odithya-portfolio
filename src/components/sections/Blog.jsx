@@ -1,4 +1,5 @@
 import { posts } from "../../data/posts.js";
+import { site } from "../../data/site.js";
 import "./blog.css";
 
 // Turns "2026-09-12" into "Sep 12, 2026".
@@ -42,6 +43,10 @@ export default function Blog() {
           </li>
         ))}
       </ul>
+
+      <a className="post-more" href={site.medium} target="_blank" rel="noreferrer">
+        More on Medium <span aria-hidden="true">↗</span>
+      </a>
     </section>
   );
 }

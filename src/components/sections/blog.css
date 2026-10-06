@@ -9,7 +9,7 @@
 
 .post {
   display: grid;
-  grid-template-columns: 200px 1fr auto;
+  grid-template-columns: 220px 1fr auto;
   gap: 24px;
   align-items: start;
   padding: 28px 8px;
@@ -62,6 +62,18 @@
   transition: color 0.2s, transform 0.2s;
 }
 .post:hover .post-arrow { color: var(--accent); transform: translate(3px, -3px); }
+
+.post-more {
+  display: inline-block;
+  margin-top: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--line);
+  transition: color 0.2s, border-color 0.2s;
+}
+.post-more:hover { color: var(--accent); border-color: var(--accent); }
+.post-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 700px) {
   .post { grid-template-columns: 1fr auto; gap: 8px 16px; }
