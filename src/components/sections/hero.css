@@ -124,13 +124,13 @@
   font-size: 0.95rem;
   color: var(--muted);
 }
-.hero-apps .marquee { --gap: 48px; }
+.hero-apps .marquee { --gap: 88px; } /* clear space between brands */
 
 @media (max-width: 900px) {
   .section.hero { padding-top: 24px; padding-bottom: 48px; }
   .hero-row { flex-direction: column; align-items: flex-start; }
   .hero-apps { margin-top: 40px; }
-  .hero-apps .marquee { --gap: 36px; }
+  .hero-apps .marquee { --gap: 56px; }
 }
 
 /* Phones: drop "Currently" so the badge stays on one line. */
