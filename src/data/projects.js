@@ -199,16 +199,22 @@ export const projects = [
   {
     slug: "pop-cosmetics",
     title: "POP Cosmetics",
-    domain: "POP Cosmetics · store",
-    preview: "list", // TODO: real data - add a screenshot (no live demo yet)
+    domain: "POP Cosmetics · storefront",
+    image: "/projects/pop/home.webp",
     year: "2025",
     role: "Solo project",
     summary:
       "A full MERN e-commerce store: catalog, cart and checkout, orders, " +
       "reviews, wishlists, an admin dashboard and an AI shopping concierge.",
     tech: ["React 19", "Node.js", "Express", "MongoDB", "Gemini API"],
-    live: null, // TODO: real data - add the live link if it is deployed
+    live: null, // not deployed yet
     github: "https://github.com/AshanOdi/E-Commerce-Platform-using-Mern-frontend",
+    gallery: [
+      { src: "/projects/pop/home.webp", width: 1440, height: 674, caption: "Storefront home with featured products" },
+      { src: "/projects/pop/products.webp", width: 1440, height: 690, caption: "Catalog with search, price filters and sorting" },
+      { src: "/projects/pop/admin-products.webp", width: 1440, height: 679, caption: "Admin dashboard: product management" },
+      { src: "/projects/pop/mobile-home.webp", width: 371, height: 817, mobile: true, caption: "Phone: storefront home" },
+    ],
     caseStudy: {
       problem:
         "Build a complete online store end to end, from the product catalog " +
