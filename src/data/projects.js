@@ -71,7 +71,7 @@ export const projects = [
     slug: "kaalagune",
     title: "Kaalagune",
     domain: "kaalagune-app.vercel.app",
-    image: "/projects/kaalagune/dashboard.webp",
+    image: "/projects/kaalagune/sunny.webp",
     year: "2025",
     role: "Solo project",
     summary:
@@ -82,7 +82,9 @@ export const projects = [
     live: "https://kaalagune-app.vercel.app/",
     github: "https://github.com/AshanOdi/Weather-App",
     gallery: [
-      { src: "/projects/kaalagune/dashboard.webp", caption: "Dashboard: saved cities, live weather, tips and 24-hour chart" },
+      { src: "/projects/kaalagune/sunny.webp", width: 1440, height: 687, caption: "Clear sky: the background follows the weather and time of day" },
+      { src: "/projects/kaalagune/overcast.webp", width: 1440, height: 691, caption: "Overcast night: saved cities, 24-hour chart, wind and sun" },
+      { src: "/projects/kaalagune/mobile.webp", width: 371, height: 814, mobile: true, caption: "Phone: swipeable saved cities" },
     ],
     caseStudy: {
       problem:
