@@ -58,9 +58,13 @@
   animation: status-pulse 2s ease-out infinite;
 }
 
-.status-label { color: var(--muted); }
+.status-label {
+  color: var(--muted);
+}
 /* Capitalise the first visible word, whichever it is. */
-.status-label::first-letter { text-transform: uppercase; }
+.status-label::first-letter {
+  text-transform: uppercase;
+}
 .status-item {
   font-weight: 700;
   color: var(--ink);
@@ -68,12 +72,24 @@
 }
 
 @keyframes status-pulse {
-  from { transform: scale(1); opacity: 0.6; }
-  to { transform: scale(3); opacity: 0; }
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
 }
 @keyframes status-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-eyebrow {
@@ -82,7 +98,10 @@
   font-size: 0.9rem;
   color: var(--muted);
 }
-.hero-eyebrow span { color: var(--accent); margin: 0 6px; }
+.hero-eyebrow span {
+  color: var(--accent);
+  margin: 0 6px;
+}
 
 /* The big editorial headline. clamp() scales it with the screen width. */
 .hero-title {
@@ -93,7 +112,9 @@
   line-height: 1.02;
   letter-spacing: -0.045em;
 }
-.hero-accent { color: var(--accent); }
+.hero-accent {
+  color: var(--accent);
+}
 
 .hero-row {
   display: flex;
@@ -118,27 +139,48 @@
   gap: 12px;
 }
 
-.hero-apps { margin-top: 48px; }
+.hero-apps {
+  margin-top: 48px;
+}
 .hero-apps > p {
   margin: 0 0 6px;
   font-size: 0.95rem;
   color: var(--muted);
 }
-.hero-apps .marquee { --gap: 88px; } /* clear space between brands */
+.hero-apps .marquee {
+  --gap: 88px;
+} /* clear space between brands */
 
 @media (max-width: 900px) {
-  .section.hero { padding-top: 24px; padding-bottom: 48px; }
-  .hero-row { flex-direction: column; align-items: flex-start; }
-  .hero-apps { margin-top: 40px; }
-  .hero-apps .marquee { --gap: 56px; }
+  .section.hero {
+    padding-top: 24px;
+    padding-bottom: 48px;
+  }
+  .hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-apps {
+    margin-top: 40px;
+  }
+  .hero-apps .marquee {
+    --gap: 56px;
+  }
 }
 
 /* Phones: drop "Currently" so the badge stays on one line. */
 @media (max-width: 480px) {
-  .status-label-long { display: none; }
-  .hero-status { font-size: 0.85rem; }
+  .status-label-long {
+    display: none;
+  }
+  .hero-status {
+    font-size: 0.85rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .status-dot::after, .status-item { animation: none; }
+  .status-dot::after,
+  .status-item {
+    animation: none;
+  }
 }
