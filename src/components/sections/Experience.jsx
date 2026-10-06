@@ -22,7 +22,12 @@ export default function Experience() {
             <div className="tl-card">
               <h3>
                 {job.role}{" "}
-                <a href={job.link} target="_blank" rel="noreferrer">@ {job.company}</a>
+                {/* Link the company only when there is a website to link to. */}
+                {job.link ? (
+                  <a href={job.link} target="_blank" rel="noreferrer">@ {job.company}</a>
+                ) : (
+                  <span className="tl-company">@ {job.company}</span>
+                )}
               </h3>
 
               <ul className="tl-achievements">

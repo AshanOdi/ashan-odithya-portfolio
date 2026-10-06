@@ -5,6 +5,9 @@
   align-items: start;
 }
 
+/* Education only (no certifications yet): one comfortable column. */
+.edu-grid.is-single { grid-template-columns: minmax(0, 720px); }
+
 .edu-label {
   margin: 0 0 14px;
   font-family: var(--font-mono);
