@@ -79,24 +79,28 @@
   scroll-snap-type: x mandatory;
   scroll-padding: 0 44px;
 }
-.cs-gallery { align-items: flex-start; }
+/* Every screenshot gets the same height; its width follows its own shape
+   (wide for desktop, narrow for phones), so the row stays even with no
+   empty space under the wide ones. */
 .cs-gallery figure {
-  flex: 0 0 82%;
+  flex: 0 0 auto;
   margin: 0;
   scroll-snap-align: start;
 }
-/* Phone screenshots are tall and narrow: show them at phone-like width,
-   with rounder corners like a device screen. */
-.cs-gallery figure.is-mobile { flex: 0 0 210px; }
-.cs-gallery figure.is-mobile img { border-radius: 22px; }
 .cs-gallery img {
   display: block;
-  width: 100%;
-  height: auto;
+  height: clamp(200px, 38vh, 330px);
+  width: auto;
+  max-width: none;
   border: 1px solid var(--line);
   border-radius: 14px;
 }
+/* Phone screenshots: rounder corners, like a device screen. */
+.cs-gallery figure.is-mobile img { border-radius: 22px; }
+/* The caption wraps to the image width instead of stretching the figure. */
 .cs-gallery figcaption {
+  width: 0;
+  min-width: 100%;
   margin-top: 8px;
   font-size: 0.85rem;
   color: var(--muted);
