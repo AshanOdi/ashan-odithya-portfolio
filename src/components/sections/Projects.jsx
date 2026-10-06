@@ -84,9 +84,21 @@ function ProjectCard({ project, number, variant, onOpen }) {
             Case study <Icon name="arrowRight" size={16} />
           </button>
           {compact ? (
-            <a href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.title} on GitHub`}>
-              <Icon name="github" size={18} />
-            </a>
+            <>
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${project.title} live demo`}
+                >
+                  Live <Icon name="arrowUpRight" size={14} />
+                </a>
+              )}
+              <a href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.title} on GitHub`}>
+                <Icon name="github" size={18} />
+              </a>
+            </>
           ) : (
             <>
               {/* Internal tools have no public demo, so `live` is optional. */}
