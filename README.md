@@ -2,7 +2,7 @@
 
 My personal portfolio website, built to showcase my projects, skills and experience as a software engineer.
 
-**Live site:** https://yourname.dev *(coming soon)*
+**Live site:** https://ashan-odithya-portfolio.vercel.app
 
 ## Tech stack
 
@@ -72,8 +72,9 @@ portfolio/
 - [x] Blog / notes
 - [x] Contact section
 - [x] Footer, favicon, social meta and scroll reveal
-- [ ] Replace mock content with real data (projects, experience, links, resume)
-- [ ] Deploy to Vercel with a custom domain
+- [x] Replace mock content with real data (projects, experience, links, resume)
+- [x] Deploy to Vercel
+- [ ] Custom domain
 
 ## License
 
