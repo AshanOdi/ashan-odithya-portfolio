@@ -21,7 +21,7 @@ export default function Portrait() {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -31,7 +31,7 @@ export default function Portrait() {
   // allow motion; phones and "reduce motion" get the still version.
   useEffect(() => {
     const canMove = window.matchMedia(
-      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     ).matches;
     if (!canMove) return;
 
@@ -48,7 +48,8 @@ export default function Portrait() {
       el.style.setProperty("--px", current.x.toFixed(3));
       el.style.setProperty("--py", current.y.toFixed(3));
       const settled =
-        Math.abs(target.x - current.x) < 0.001 && Math.abs(target.y - current.y) < 0.001;
+        Math.abs(target.x - current.x) < 0.001 &&
+        Math.abs(target.y - current.y) < 0.001;
       frame = settled ? 0 : requestAnimationFrame(tick);
     };
     const start = () => {
@@ -107,7 +108,8 @@ export default function Portrait() {
           <br />
           <span className="k">cloud</span>: <span className="s">"AWS"</span>,
           <br />
-          <span className="k">learning</span>: <span className="s">"AI"</span>
+          <span className="k">learning</span>:{" "}
+          <span className="s">"DevOps"</span>
         </code>
       </div>
     </div>
