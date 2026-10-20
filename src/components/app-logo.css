@@ -34,6 +34,7 @@
 .app-logo-wordmark { height: 26px; }
 .app-logo-mark { width: 28px; height: 28px; transition: color 0.3s; }
 .app-logo:hover .app-logo-mark { color: #12a35a; }
+.app-logo:hover .app-logo-mark.is-card { color: var(--accent); }
 /* "Cosmetics" sits next to the POP wordmark, a little lighter. */
 .app-logo-wordmark + .app-logo-label { font-weight: 600; font-size: 1.15rem; }
 

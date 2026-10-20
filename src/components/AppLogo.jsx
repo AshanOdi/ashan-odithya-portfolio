@@ -2,6 +2,11 @@ import "./app-logo.css";
 
 // Drawn icons for apps that have no logo file (in the current text colour).
 const marks = {
+  card: (
+    <g fill="currentColor">
+      <path d="M4 5h16a2 2 0 0 1 2 2v1H2V7a2 2 0 0 1 2-2Zm-2 6h20v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6Zm3 4v1.5h5V15H5Z" />
+    </g>
+  ),
   leaf: (
     <g fill="currentColor">
       <path d="M20 4c-8 0-14 4-14 11 0 1.4.3 2.7.8 3.9C9 13 13 10 17 8.5 13.5 11 10.5 14.5 8.6 20.4 9.6 20.8 10.8 21 12 21c6 0 9-5.5 8-17Z" />
@@ -25,7 +30,7 @@ export default function AppLogo({ name, icon, wordmark, label, mark, ash }) {
     <span className="app-logo" role="img" aria-label={name}>
       {icon && <img className="app-logo-icon" src={icon} alt="" loading="lazy" />}
       {mark && (
-        <svg className="app-logo-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <svg className={`app-logo-mark is-${mark}`} viewBox="0 0 24 24" aria-hidden="true">
           {marks[mark]}
         </svg>
       )}

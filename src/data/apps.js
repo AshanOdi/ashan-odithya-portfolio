@@ -6,6 +6,7 @@
 //   mark      a built-in drawn icon, for apps without a logo file
 // Logos show in grey and get their real colours back on hover.
 export const apps = [
+  { name: "Lanka Card Deals", mark: "card", label: "Lanka Card Deals" },
   { name: "Kaalagune", icon: "/logos/kaalagune.webp", label: "Kaalagune" },
   { name: "PopcornPicks", icon: "/logos/popcornpicks.webp", label: "PopcornPicks" },
   { name: "Forge", icon: "/logos/forge-icon.webp", wordmark: "/logos/forge-name.webp" },
