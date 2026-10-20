@@ -74,7 +74,7 @@ const SCRIPT = [
   { type: "cmd", text: "git push origin main" },
   { type: "out", text: "✓ 48 tests passed" },
   { type: "cmd", text: "npm run deploy" },
-  { type: "out", text: "✓ Live at yourname.dev" },
+  { type: "out", text: "✓ Live on Vercel" },
 ];
 
 function TerminalVisual() {
