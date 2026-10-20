@@ -28,7 +28,9 @@ export const experience = [
     location: "Sri Lanka",
     achievements: [
       "BSc. Engineering (Hons.) in Computer Engineering, Faculty of Engineering. Degree completed; graduation ceremony pending.",
-      "Built full-stack side projects alongside my studies: Kaalagune, Forge, POP Cosmetics and PopcornPicks.",
+      "Research: a QoS-aware distributed query processing system with Apache Calcite, PostgreSQL and LinUCB, evaluated on TPC-H.",
+      "Built full-stack side projects alongside my studies: Lanka Card Deals, Kaalagune, Forge, POP Cosmetics and PopcornPicks.",
+      "Competitive programming: UOJ Coders 4.0 finalist (Sri Lanka Rank 12) and MoraXtreme 9.0 (Sri Lanka Rank 82).",
     ],
   },
 ];
