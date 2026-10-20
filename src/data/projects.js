@@ -66,6 +66,53 @@ export const projects = [
       ],
     },
   },
+  // REAL project (from ~/ash-personal/lanka-card-deals/README.md + CV).
+  {
+    slug: "lanka-card-deals",
+    title: "Lanka Card Deals",
+    domain: "card-off.vercel.app",
+    image: "/projects/lanka-card-deals/home.webp",
+    year: "2026",
+    role: "Solo project",
+    summary:
+      "Every current credit card offer from Sri Lankan banks in one place: " +
+      "~1,080 live offers from 3 banks, scraped and updated daily, with " +
+      "search, filters and a cross-bank comparison page.",
+    tech: ["Next.js", "TypeScript", "MongoDB Atlas", "Zod", "GitHub Actions", "Vercel"],
+    live: "https://card-off.vercel.app",
+    github: "https://github.com/AshanOdi/CardOff",
+    gallery: [
+      { src: "/projects/lanka-card-deals/home.webp", width: 1280, height: 860, caption: "Offer grid with search, category, type and bank filters" },
+      { src: "/projects/lanka-card-deals/compare.webp", width: 1280, height: 860, caption: "Compare banks: the same merchant side by side, best deal highlighted" },
+      { src: "/projects/lanka-card-deals/mobile.webp", width: 390, height: 844, mobile: true, caption: "Phone view" },
+    ],
+    caseStudy: {
+      problem:
+        "Banks publish their card offers on separate sites, each with its own " +
+        "layout, so finding the best deal for a merchant means checking every " +
+        "bank by hand.",
+      role:
+        "Built it solo end to end: the TypeScript scrapers, data pipeline and " +
+        "MongoDB model, the Next.js frontend and JSON API, tests, CI and the " +
+        "scheduled jobs, all on free tiers.",
+      decisions: [
+        "One pipeline for every bank: each scraper's output is validated with the same Zod schema before a MongoDB bulk upsert, so a layout change shows up as skipped offers, not bad data.",
+        "Next.js App Router with Server Components; filters and pagination live in the URL, so links are shareable.",
+        "Split scheduling: GitHub Actions for one bank, a secret-protected Vercel Cron route for the others, through the same code path.",
+        "Runs entirely on free tiers: Vercel Hobby, MongoDB Atlas M0 and GitHub Actions.",
+      ],
+      challenges: [
+        "HNB's obvious API returns a random 20 offers; reading its frontend bundle revealed the full-list endpoint, raising coverage to the full ~900-offer list.",
+        "Commercial Bank sits behind an AWS WAF that rate-limits and blocks CI runner IPs; solved with throttled requests, a 403 circuit breaker and moving that bank to Vercel Cron.",
+        "Payment-plan fees like “36 Months – 9%” look like discounts; a classifier separates real discounts from fees.",
+        "A guard stops a broken scrape (fewer than half the active offers found) from expiring live offers.",
+      ],
+      results: [
+        "~1,080 live offers from HNB, Commercial Bank and People's Bank, updated every morning.",
+        "31 unit tests on real bank data, with type-check, tests and a production build on every push.",
+      ],
+    },
+  },
   // REAL project (from ~/ash-personal/Weather-App/README.md).
   {
     slug: "kaalagune",
