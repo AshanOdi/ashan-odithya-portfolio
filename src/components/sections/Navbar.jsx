@@ -75,7 +75,8 @@ export default function Navbar() {
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
-          <a className="nav-resume" href={site.resume} target="_blank" rel="noreferrer">
+          {/* `download` saves the PDF straight away, under a clear file name. */}
+          <a className="nav-resume" href={site.resume} download={site.resumeFileName}>
             Resume
           </a>
           <button
