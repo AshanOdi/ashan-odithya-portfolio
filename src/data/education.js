@@ -2,7 +2,7 @@
 // Wording matches my CV.
 export const education = [
   {
-    degree: "BSc Engineering (Hons) in Computer Engineering",
+    degree: "BSc. Engineering (Hons.) in Computer Engineering",
     school: "Department of Computer Engineering, Faculty of Engineering, University of Jaffna",
     period: "2022 — 2026",
     note: "Degree completed; graduation ceremony pending.",
