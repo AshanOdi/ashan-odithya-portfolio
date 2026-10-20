@@ -3,21 +3,22 @@
 // `link` (optional) links the company name to its website; `tech` is optional.
 export const experience = [
   {
-    role: "Software Engineering Intern",
-    company: "WealthOS Asia Pacific (Private) Limited",
+    role: "Software Engineer Intern",
+    company: "WealthOS (a JPMorgan Company)",
     link: null,
     period: "Nov 2025 — Present",
-    location: "Sri Lanka",
+    location: "Colombo, Sri Lanka",
     current: true,
-    // From the Wellness Allowance Portal README ("My Role").
+    // From my CV and the Wellness Allowance Portal README.
     achievements: [
-      "Top contributor to the Wellness Allowance Portal (~600 of ~1,160 commits): a serverless platform where employees claim their wellness allowance and HR and Finance approve and pay it.",
-      "Built serverless Node.js Lambdas, the DynamoDB data model and the transactional balance logic that keeps balances correct when people act on the same claim at once.",
-      "Wrote Terraform modules for dev and production, and a Bitbucket CI/CD pipeline with OIDC, automatic database backups and post-deploy smoke tests.",
-      "Integrated Cognito with Google Workspace SSO, and built React features and the mobile-friendly UI.",
-      "Wrote unit tests and OpenAPI docs; the project's 169 tests run on every pipeline.",
+      "Built and deployed a serverless employee wellness benefits platform for submitting, reviewing, approving and tracking healthcare and wellness expense claims, serving 75 employees and ~300 claims per month.",
+      "Developed full-stack features in React and Node.js (TypeScript) on AWS Lambda for claim submission, validation, balance tracking and multi-stage HR/Finance approvals.",
+      "Designed and built 18 RESTful API endpoints on AWS Lambda and API Gateway with DynamoDB, documented in OpenAPI/Swagger.",
+      "Implemented authentication and authorization with Amazon Cognito (OAuth 2.0, JWT) and role-based access control, and secured document uploads with S3 presigned URLs.",
+      "Automated deployments with CI/CD and Terraform across environments, and supported production through debugging, root cause analysis, testing and fixes.",
+      "Top contributor to the codebase (~600 of ~1,160 commits); worked with senior engineers, QA, DevOps and Product Owners through Bitbucket pull-request reviews.",
     ],
-    tech: ["React", "TypeScript", "Node.js", "AWS Lambda", "DynamoDB", "Terraform"],
+    tech: ["TypeScript", "Node.js", "React", "AWS Lambda", "API Gateway", "DynamoDB", "Cognito", "Terraform"],
   },
   {
     role: "Computer Engineering Student",

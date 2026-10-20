@@ -12,14 +12,14 @@ export const projects = [
     domain: "Wellness Portal · internal tool",
     image: "/projects/wellness/finance-dashboard.webp",
     year: "2026",
-    role: "Software Engineering Intern",
-    company: "WealthOS Asia Pacific (Private) Limited",
+    role: "Software Engineer Intern",
+    company: "WealthOS (a JPMorgan Company)",
     companyShort: "WealthOS",
     summary:
       "A serverless, mobile-first portal where employees claim their yearly " +
       "wellness allowance, and HR and Finance review, approve and pay those " +
-      "claims. Built on AWS Lambda, DynamoDB and Cognito, with all " +
-      "infrastructure in Terraform.",
+      "claims. Serves 75 employees and ~300 claims a month, on AWS Lambda, " +
+      "DynamoDB and Cognito, with all infrastructure in Terraform.",
     tech: ["React 19", "TypeScript", "AWS Lambda", "DynamoDB", "Cognito", "S3", "Terraform"],
     live: null, // internal company tool: no public demo
     github: "https://github.com/AshanOdi/Wellness-Allowance-Internship",
@@ -39,7 +39,7 @@ export const projects = [
         "balances drifted, invoices were scattered across inboxes, and Finance " +
         "had no single view of pending payouts.",
       role:
-        "Software Engineering Intern in a small team, and the top contributor " +
+        "Software Engineer Intern in a small team, and the top contributor " +
         "to the codebase (~600 of ~1,160 commits, Feb–Sep 2026). I built the " +
         "serverless backend Lambdas, the DynamoDB data model and transactional " +
         "balance logic, the claim state machine and server-side authorization, " +
@@ -60,6 +60,7 @@ export const projects = [
       ],
       results: [
         "Replaced email and spreadsheets with one self-service portal for employees, HR, Finance and admins.",
+        "Serves 75 employees and processes ~300 claims per month in production.",
         "169 unit tests run on every pipeline; a failing test blocks the deploy.",
         "17 Lambda functions and 18 API routes, all defined in Terraform and documented with OpenAPI 3.",
         "Safe production deploys: short-lived OIDC credentials, automatic DynamoDB backups before every apply and a post-deploy smoke test.",
