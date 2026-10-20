@@ -1,66 +1,78 @@
 import "./skills.css";
 
-// Skills grouped by category. `core: true` marks the main skills,
-// which get a stronger style.
-// TODO: real data - review this list and remove anything you don't use.
+// Skills grouped by category, matching the "Technical skills" on my CV
+// (plus Next.js and Spring Boot, used in Lanka Card Deals and Forge).
+// `core: true` marks the main skills, which get a stronger style.
 const groups = [
+  {
+    title: "Languages",
+    skills: [
+      { name: "TypeScript", core: true },
+      { name: "JavaScript", core: true },
+      { name: "Java" },
+      { name: "Python" },
+      { name: "C++" },
+    ],
+  },
   {
     title: "Frontend",
     skills: [
       { name: "React", core: true },
-      { name: "TypeScript", core: true },
-      { name: "JavaScript" },
-      { name: "HTML & CSS" },
-      { name: "Vite" },
-      { name: "Responsive UI" },
+      { name: "Next.js" },
+      { name: "Redux Toolkit" },
+      { name: "Tailwind CSS" },
+      { name: "Material UI" },
+      { name: "Ant Design" },
+      { name: "HTML5 & CSS3" },
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & APIs",
     skills: [
       { name: "Node.js", core: true },
-      { name: "Express" },
+      { name: "Express.js" },
       { name: "REST APIs" },
-      { name: "Authentication" },
-      { name: "System design" },
+      { name: "Serverless" },
+      { name: "Microservices" },
+      { name: "JWT & OAuth 2.0" },
+      { name: "OpenAPI / Swagger" },
+      { name: "Spring Boot" },
     ],
   },
   {
-    title: "Cloud & DevOps",
+    title: "AWS",
     skills: [
-      { name: "AWS", core: true },
-      { name: "Lambda" },
+      { name: "Lambda", core: true },
+      { name: "API Gateway" },
+      { name: "DynamoDB" },
       { name: "S3" },
-      { name: "EC2" },
-      { name: "IAM" },
-      { name: "Docker" },
-      { name: "GitHub Actions" },
+      { name: "Cognito" },
+      { name: "CloudWatch" },
+      { name: "VPC" },
+      { name: "Route 53" },
     ],
   },
   {
     title: "Databases",
     skills: [
-      { name: "PostgreSQL" },
       { name: "MongoDB" },
+      { name: "PostgreSQL" },
+      { name: "MySQL" },
       { name: "DynamoDB" },
     ],
   },
   {
-    title: "AI / ML",
+    title: "DevOps, testing & tools",
     skills: [
-      { name: "Python" },
-      { name: "LLM APIs" },
-      { name: "Prompt design" },
-    ],
-  },
-  {
-    title: "Tools",
-    skills: [
-      { name: "Git" },
-      { name: "Postman" },
-      { name: "VS Code" },
-      { name: "Linux" },
+      { name: "Terraform", core: true },
+      { name: "Docker" },
+      { name: "CI/CD" },
+      { name: "GitHub Actions" },
+      { name: "Playwright" },
+      { name: "Unit & integration testing" },
+      { name: "Git, GitHub & Bitbucket" },
       { name: "Jira" },
+      { name: "Agile / Scrum" },
     ],
   },
 ];
