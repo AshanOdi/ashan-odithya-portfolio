@@ -26,7 +26,7 @@ export const experience = [
     period: "2022 — 2026",
     location: "Sri Lanka",
     achievements: [
-      "BSc (Hons) in Computer Engineering, Faculty of Engineering. Degree completed; graduation ceremony pending.",
+      "BSc Engineering (Hons) in Computer Engineering, Faculty of Engineering. Degree completed; graduation ceremony pending.",
       "Built full-stack side projects alongside my studies: Kaalagune, Forge, POP Cosmetics and PopcornPicks.",
     ],
   },

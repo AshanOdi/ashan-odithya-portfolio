@@ -46,6 +46,12 @@ const paths = {
   arrowUpRight: <path d="M7 17 17 7M7 7h10v10" />,
   arrowRight: <path d="M5 12h14M13 6l6 6-6 6" />,
   arrowLeft: <path d="M19 12H5M11 6l-6 6 6 6" />,
+  trophy: (
+    <>
+      <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+      <path d="M17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3" />
+    </>
+  ),
   pause: <path d="M9 5v14M15 5v14" />,
   play: <path d="M7 4.5v15l12-7.5-12-7.5Z" />,
   github: (

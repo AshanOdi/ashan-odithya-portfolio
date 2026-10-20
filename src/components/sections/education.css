@@ -5,9 +5,6 @@
   align-items: start;
 }
 
-/* Education only (no certifications yet): one comfortable column. */
-.edu-grid.is-single { grid-template-columns: minmax(0, 720px); }
-
 .edu-label {
   margin: 0 0 14px;
   font-family: var(--font-mono);
@@ -41,6 +38,45 @@
 }
 .edu-school { margin: 6px 0 0; font-weight: 600; }
 .edu-note { margin: 14px 0 0; color: var(--muted); line-height: 1.6; }
+.edu-card > h4 + .edu-note { margin-top: 10px; }
+
+/* Space above the second heading in a column (Research, Awards). */
+.edu-label-gap { margin-top: 32px; }
+
+.edu-sub {
+  margin: 20px 0 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Small pills for coursework and research tools. */
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.edu-tags li {
+  padding: 4px 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.edu-points {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0 16px;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.edu-points li::marker { color: var(--accent); }
 
 /* Certifications: one card, rows split by thin lines. */
 .cert-list { margin: 0; padding: 6px 0; list-style: none; }
@@ -66,9 +102,31 @@ a.cert-year { color: var(--accent); }
 a.cert-year:hover { text-decoration: underline; text-underline-offset: 4px; }
 a.cert-year:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
+/* Awards: trophy icon, name + team, result on the right. */
+.award-item { justify-content: flex-start; }
+.award-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.award-item > div { flex: 1; }
+.award-result {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-align: right;
+}
+
 @media (max-width: 900px) {
   .edu-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 @media (max-width: 500px) {
   .cert-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .award-result { text-align: left; }
 }
